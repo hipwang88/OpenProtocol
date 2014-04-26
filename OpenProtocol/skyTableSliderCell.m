@@ -1,0 +1,29 @@
+//
+//  skyTableSliderCell.m
+//  SkyworthSCXPJ
+//
+//  Created by skyworth on 13-9-11.
+//  Copyright (c) 2013年 skyworth. All rights reserved.
+//
+
+#import "skyTableSliderCell.h"
+
+@implementation skyTableSliderCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end
