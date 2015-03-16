@@ -23,8 +23,8 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
 // Private
 @interface skySCXWin()
 {
-    int nRows;                          // 拼接规格
-    int nColumns;
+    NSInteger nRows;                    // 拼接规格
+    NSInteger nColumns;
     skyResizableAnchorPoint anchor;     // 锚点定位
     
     CGPoint touchStart;                 // 点击起始点
@@ -52,7 +52,7 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
 // 绘制窗口外框
 - (void)drawOutline:(CGContextRef)context;
 // 信号类型与通道标签设置
-- (void)setSignal:(int)nType andChannel:(int)nChannel;
+- (void)setSignal:(NSInteger)nType andChannel:(NSInteger)nChannel;
 // 移动视图
 - (void)moveSCXWinUsingTouchLocation:(CGPoint)touchPoint;
 // 缩放视图
@@ -95,7 +95,7 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
 
 #pragma mark - Basic Methods
 // 窗口初始化
-- (id)initWithFrame:(CGRect)frame withRow:(int)nRow andColumn:(int)nColumn
+- (id)initWithFrame:(CGRect)frame withRow:(NSInteger)nRow andColumn:(NSInteger)nColumn
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -240,49 +240,49 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
 }
 
 // 设置基本单元宽度
-- (void)setSCXWinBasicWinWidth:(int)nBasicWidth
+- (void)setSCXWinBasicWinWidth:(NSInteger)nBasicWidth
 {
     nBasicWinWidth = nBasicWidth;
 }
 
 // 获取基本单元宽度
-- (int)getSCXWinBasicWinWidth
+- (NSInteger)getSCXWinBasicWinWidth
 {
     return nBasicWinWidth;
 }
 
 // 设置基本单元高度
-- (void)setSCXWinBasicWinHeight:(int)nBasicHeight
+- (void)setSCXWinBasicWinHeight:(NSInteger)nBasicHeight
 {
     nBasicWinHeight = nBasicHeight;
 }
 
 // 获取基本单元高度
-- (int)getSCXWinBasicWinHeight
+- (NSInteger)getSCXWinBasicWinHeight
 {
     return nBasicWinHeight;
 }
 
 // 设置当前窗口宽度
-- (void)setSCXWinCurrentWinWidth:(int)nCurrentWidth
+- (void)setSCXWinCurrentWinWidth:(NSInteger)nCurrentWidth
 {
     nCurrentWinWidth = nCurrentWidth;
 }
 
 // 获取当前窗口宽度
-- (int)getSCXWinCurrentWinWidth
+- (NSInteger)getSCXWinCurrentWinWidth
 {
     return nCurrentWinWidth;
 }
 
 // 设置当前窗口高度
-- (void)setSCXWinCurrentWinHeight:(int)nCurrentHeight
+- (void)setSCXWinCurrentWinHeight:(NSInteger)nCurrentHeight
 {
     nCurrentWinHeight = nCurrentHeight;
 }
 
 // 获取当前窗口高度
-- (int)getSCXWinCurrentWinHeight
+- (NSInteger)getSCXWinCurrentWinHeight
 {
     return nCurrentWinHeight;
 }
@@ -322,7 +322,7 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
     _winNumLabel.textAlignment = NSTextAlignmentLeft;
     _winNumLabel.backgroundColor = [UIColor clearColor];
     _winNumLabel.textColor = [UIColor whiteColor];
-    _winNumLabel.text = [NSString stringWithFormat:@"No.%d",nWinNumber];
+    _winNumLabel.text = [NSString stringWithFormat:@"No.%ld",nWinNumber];
     _winNumLabel.alpha = 1.0;
     _winNumLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     // 加入信号源Label
@@ -333,7 +333,7 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
     _signalLabel.textAlignment = NSTextAlignmentRight;
     _signalLabel.backgroundColor = [UIColor clearColor];
     _signalLabel.textColor = [UIColor whiteColor];
-    _signalLabel.text = [NSString stringWithFormat:@"CVBS-%d",nWinNumber];
+    _signalLabel.text = [NSString stringWithFormat:@"CVBS-%ld",nWinNumber];
     _signalLabel.alpha = 1.0;
     _signalLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth ;
     // 加入窗体位置Label
@@ -472,7 +472,7 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
 }
 
 // 信号源与通道设置
-- (void)setSignal:(int)nType andChannel:(int)nChannel
+- (void)setSignal:(NSInteger)nType andChannel:(NSInteger)nChannel
 {
     nSignalType = nType;
     nChannelNum = nChannel;
@@ -481,19 +481,19 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
     switch (nSignalType)
     {
         case 0:// HDMI
-            _signalLabel.text = [NSString stringWithFormat:@"HDMI-%d",nChannelNum];
+            _signalLabel.text = [NSString stringWithFormat:@"HDMI-%ld",nChannelNum];
             break;
         case 1:// DVI
-            _signalLabel.text = [NSString stringWithFormat:@"DVI-%d",nChannelNum];
+            _signalLabel.text = [NSString stringWithFormat:@"DVI-%ld",nChannelNum];
             break;
         case 2:// VGA
-            _signalLabel.text = [NSString stringWithFormat:@"VGA-%d",nChannelNum];
+            _signalLabel.text = [NSString stringWithFormat:@"VGA-%ld",nChannelNum];
             break;
         case 3:// CVBS
-            _signalLabel.text = [NSString stringWithFormat:@"CVBS-%d",nChannelNum];
+            _signalLabel.text = [NSString stringWithFormat:@"CVBS-%ld",nChannelNum];
             break;
         case 4:// SDI
-            _signalLabel.text = [NSString stringWithFormat:@"SDI-%d",nChannelNum];
+            _signalLabel.text = [NSString stringWithFormat:@"SDI-%ld",nChannelNum];
             break;
     }
 }
@@ -634,7 +634,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 // 获取位置数据
 - (NSString *)getWindowPositionStr;
 {
-    int nRes = [_delegate scxWinGetResolution];
+    NSInteger nRes = [_delegate scxWinGetResolution];
     NSString *strValue;
     
     switch (nRes)
@@ -671,7 +671,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 // 获取大小数据
 - (NSString *)getWindowSizeStr
 {
-    int nRes = [_delegate scxWinGetResolution];
+    NSInteger nRes = [_delegate scxWinGetResolution];
     NSString *strValue;
     
     switch (nRes)
@@ -707,7 +707,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 
 #pragma mark - Public Methods
 // 窗口数据初始化
-- (void)initializeSCXWin:(int)nwinNum
+- (void)initializeSCXWin:(NSInteger)nwinNum
 {
     // 设置初值
     nWinNumber = nwinNum;
@@ -719,7 +719,6 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
     _scxPop.signalView = [[skySignalView alloc] initWithStyle:UITableViewStylePlain];
     _scxPop.signalView.dataSource = [_delegate scxWinSignalDataSource];
     _scxPop.signalView.signalDelegate = self;
-    //[_scxPop.signalView initialSignalTable];
     
     // 更新窗口UI
     [self updateWindowUI];
@@ -729,7 +728,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 {
     /********************* 标签值设置 *********************/
     // 窗口编号标签
-    _winNumLabel.text = [NSString stringWithFormat:@"No.%d",nWinNumber];
+    _winNumLabel.text = [NSString stringWithFormat:@"No.%ld",nWinNumber];
     
     // 叠加状态设定
     if (bOverlying)
@@ -759,7 +758,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 }
 
 // 矩阵切换
-- (void)switchSignal:(int)nType toChannel:(int)nChannel
+- (void)switchSignal:(NSInteger)nType toChannel:(NSInteger)nChannel
 {
     [self setSignal:nType andChannel:nChannel];
     
@@ -769,7 +768,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 }
 
 // 窗口拼接大小改变
-- (void)splitWinStartX:(int)startx StartY:(int)starty HCount:(int)nHcount VCount:(int)nVCount
+- (void)splitWinStartX:(NSInteger)startx StartY:(NSInteger)starty HCount:(NSInteger)nHcount VCount:(NSInteger)nVCount
 {
     _startPoint.x = startx;
     _startPoint.y = starty;
@@ -966,14 +965,14 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 }
 
 // 保存当前窗口的情景模式
-- (void)saveSCXWinModelStatusAtIndex:(int)nIndex
+- (void)saveSCXWinModelStatusAtIndex:(NSInteger)nIndex
 {
     // 序列化
     [_dataSource saveSCXWinModelDataSource:self AtIndex:nIndex];
 }
 
 // 加载窗口情景模式
-- (void)loadSCXWinModelStatusAtIndex:(int)nIndex
+- (void)loadSCXWinModelStatusAtIndex:(NSInteger)nIndex
 {
     // 反序列化
     [_dataSource loadSCXWinModelDataSource:self AtIndex:nIndex];
@@ -1098,7 +1097,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 
 #pragma mark - skySignalViewDelegate
 // 进行一次矩阵切换
-- (void)haveSignal:(int)nSourceType SwitchTo:(int)nNum
+- (void)haveSignal:(NSInteger)nSourceType SwitchTo:(NSInteger)nNum
 {
     [_popView dismissPopoverAnimated:YES];
     

@@ -20,9 +20,9 @@
 ///////////////////////// Property ///////////////////////////
 @property (nonatomic,strong) NSArray *resArray;
 @property (nonatomic,strong) NSArray *typeArray;
-@property (nonatomic,assign) int screenRow;
-@property (nonatomic,assign) int screenColumn;
-@property (nonatomic,assign) int screenResolution;
+@property (nonatomic,assign) NSInteger screenRow;
+@property (nonatomic,assign) NSInteger screenColumn;
+@property (nonatomic,assign) NSInteger screenResolution;
 
 ///////////////////////// Methods ////////////////////////////
 // 初始化组件
@@ -283,9 +283,9 @@
         {
             case 0:
                 cell.labelTitle.text = @"屏幕行数:";
-                cell.lableValue.text = [NSString stringWithFormat:@"%d",[_myDataSource getCurrentScreenRows]];
+                cell.lableValue.text = [NSString stringWithFormat:@"%ld",[_myDataSource getCurrentScreenRows]];
                 cell.valueStepper.minimumValue = 1;
-                cell.valueStepper.maximumValue = 10;
+                cell.valueStepper.maximumValue = 16;
                 cell.valueStepper.stepValue = 1;
                 cell.valueStepper.value = [_myDataSource getCurrentScreenRows];
                 [cell.valueStepper addTarget:self action:@selector(screenRowsStepperEvent) forControlEvents:UIControlEventValueChanged];
@@ -296,9 +296,9 @@
                 
             case 1:
                 cell.labelTitle.text = @"屏幕列数:";
-                cell.lableValue.text = [NSString stringWithFormat:@"%d",[_myDataSource getCurrentScreenColumns]];
+                cell.lableValue.text = [NSString stringWithFormat:@"%ld",[_myDataSource getCurrentScreenColumns]];
                 cell.valueStepper.minimumValue = 1;
-                cell.valueStepper.maximumValue = 10;
+                cell.valueStepper.maximumValue = 16;
                 cell.valueStepper.stepValue = 1;
                 cell.valueStepper.value = [_myDataSource getCurrentScreenColumns];
                 [cell.valueStepper addTarget:self action:@selector(screenColumnsStepperEvent) forControlEvents:UIControlEventValueChanged];
@@ -422,7 +422,7 @@
     {
         strResult = @"控制器类型与输出分辨率";
     }
-    else
+    else if (section == 2)
     {
         strResult = @"控制器常规参数设置";
     }

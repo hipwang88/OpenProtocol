@@ -106,8 +106,8 @@
     
     // 设置各个表项
     cell.modelName.text = [_tableData objectAtIndex:indexPath.row];
-    cell.saveDate.text = [_modelDataSource getModelSaveDateAtIndex:indexPath.row];
-    cell.modelImage.image = [_modelDataSource getModelImageAtIndex:indexPath.row];
+    cell.saveDate.text = [_modelDataSource getModelSaveDateAtIndex:(int)indexPath.row];
+    cell.modelImage.image = [_modelDataSource getModelImageAtIndex:(int)indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     // 给cell添加手势识别
@@ -128,7 +128,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int nIndex = indexPath.row;
+    int nIndex = (int)indexPath.row;
     
     // 判断情景是否可用
     if ([_modelDataSource isModelCanBeUsedAtIndex:nIndex])
@@ -169,7 +169,7 @@
 // 情景模式保存
 - (void)handleModelSaveEvent:(id)sender
 {
-    int nRow = _selectionIndex.row;
+    int nRow = (int)_selectionIndex.row;
     
     // 保存情景模式
     [_modelDelegate shootAppToImage:nRow];
@@ -181,7 +181,7 @@
 // 情景模式删除
 - (void)handleModelDeleteEvent:(id)sender
 {
-    int nRow = _selectionIndex.row;
+    int nRow = (int)_selectionIndex.row;
     
     // 删除情景模式
     [_modelDelegate removeModelImage:nRow];

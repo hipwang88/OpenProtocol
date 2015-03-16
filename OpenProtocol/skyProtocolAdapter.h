@@ -12,9 +12,9 @@
 @protocol skyProtocolAdapterDelegate <NSObject>
 
 // 设置控制器协议类型
-- (void)adapterDelegateSetType:(int)nType;
+- (void)adapterDelegateSetType:(NSInteger)nType;
 // 获取控制器协议类型
-- (int)adapterDelegateGetType;
+- (NSInteger)adapterDelegateGetType;
 
 @end
 
@@ -27,11 +27,11 @@
 
 /////////////////// Methods ///////////////////////
 // 初始化类
-- (id)initAdapterWithProtocolType:(int)nProtocolType;
+- (id)initAdapterWithProtocolType:(NSInteger)nProtocolType;
 // 状态初始
 - (void)initialAdapter;
 // 控制器连接
-- (BOOL)adapterConnectToController:(NSString *)ipAddress Port:(int)nPort;
+- (BOOL)adapterConnectToController:(NSString *)ipAddress Port:(NSInteger)nPort;
 // 断开控制器连接
 - (void)adapterDisconnection;
 // 控制器重连
@@ -43,7 +43,7 @@
 
 /************************************协议代理输出接口***************************************/
 // 1.控制器设置
-- (void)adapterInitialControllerRow:(int)nRow Column:(int)nColumn Resolution:(int)nRes;
+- (void)adapterInitialControllerRow:(NSInteger)nRow Column:(NSInteger)nColumn Resolution:(NSInteger)nRes;
 // 2.蜂鸣器开关
 - (void)adapterBuzzerStatus:(BOOL)bFlag;
 // 3.掉电记忆开关
@@ -57,31 +57,31 @@
 // 7.情景新建 - HDMI
 - (void)adapterModelNewWithHDMI;
 // 8.情景保存
-- (void)adapterSaveModelAtIndex:(int)nIndex;
+- (void)adapterSaveModelAtIndex:(NSInteger)nIndex;
 // 9.情景加载
-- (void)adapterLoadModelAtIndex:(int)nIndex;
+- (void)adapterLoadModelAtIndex:(NSInteger)nIndex;
 // 10.情景删除
-- (void)adapterDeleteModelAtIndex:(int)nIndex;
+- (void)adapterDeleteModelAtIndex:(NSInteger)nIndex;
 // 11.普通窗口信号切换
-- (void)adapterSignalSwitchSCXWin:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount;
+- (void)adapterSignalSwitchSCXWin:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount;
 // 12.叠加底图窗口信号切换
-- (void)adapterSignalSwitchOpenUnderWin:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)adapterSignalSwitchOpenUnderWin:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 13.叠加子窗口信号切换
-- (void)adapterSignalSwitchSubWin:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)adapterSignalSwitchSubWin:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 14.大画面拼接
-- (void)adapterSpliceSCXWin:(int)nWinID StartPanel:(int)nStart X:(int)nStartX Y:(int)nStartY V:(int)nVCount H:(int)nHCount ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)adapterSpliceSCXWin:(NSInteger)nWinID StartPanel:(NSInteger)nStart X:(NSInteger)nStartX Y:(NSInteger)nStartY V:(NSInteger)nVCount H:(NSInteger)nHCount ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 15.大画面分解
-- (void)adapterResolveSCXWin:(int)nWinID X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount;
+- (void)adapterResolveSCXWin:(NSInteger)nWinID X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount;
 // 16.进入叠加开窗
-- (void)adapterEnterOpenStatus:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)adapterEnterOpenStatus:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 17.退出叠加开窗
-- (void)adapterLeaveOpenStatus:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)adapterLeaveOpenStatus:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 18.添加子窗口
-- (void)adapterAddSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)adapterAddSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 19.关闭子窗口
-- (void)adapterDeleteSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)adapterDeleteSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 20.移动子窗口 同时包括位置与大小
-- (void)adapterMoveSubWin:(int)nSubID StartX:(int)nStartX StartY:(int)nStartY Width:(int)nWidth Height:(int)nHeight;
+- (void)adapterMoveSubWin:(NSInteger)nSubID StartX:(NSInteger)nStartX StartY:(NSInteger)nStartY Width:(NSInteger)nWidth Height:(NSInteger)nHeight;
 /*******************************************************************************************/
 
 /////////////////// Ends //////////////////////////

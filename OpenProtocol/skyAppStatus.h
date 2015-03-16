@@ -11,6 +11,8 @@
 #import "skySettingController.h"
 #import "skySettingSignal.h"
 #import "skyProtocolAdapter.h"
+#import "skySettingConnection.h"
+#import "skyTVSettingController.h"              // 20140917 by wh
 
 //
 // Screen Size
@@ -37,6 +39,10 @@
 #define kAPPSTRAIGHT        @"appStraight"
 #define kAPPBUZZER          @"appBuzzer"
 #define kAPPPROTOCOLTYPE    @"appProtocolType"
+#define kAPPIPADDRESS       @"appIPAddress"         // 20140917 by wh IP Address
+#define kAPPPORTNUMBER      @"appPortNumber"        // 20140917 by wh Port Number
+#define kAPPCMDIPADDRESS    @"appCmdIPAddress"      // 20140917 by wh Cmd IP Address
+#define kAPPCMDPORTNUMBER   @"appCmdPortNumber"     // 20140917 by wh Cmd Port Number
 //
 // skySCXWin Keys
 #define kSCXWINSTARTX       @"skySCXWin_Start.x"
@@ -71,7 +77,7 @@
 
 // class skyAppStatus
 @interface skyAppStatus : NSObject<skySCXWinDataSource,skySubWinDataSource,skySignalViewDataSource,
-        skyModelViewDataSource,skySettingControllerDataSource,skySettingSignalDataSource,skyProtocolAdapterDelegate>
+        skyModelViewDataSource,skySettingConnectionDataSource,skySettingControllerDataSource,skySettingSignalDataSource,skyTVSettingCOntrollerDataSource,skyProtocolAdapterDelegate>
 
 ///////////////// Property /////////////////////
 // 程序基本数据字典
@@ -83,6 +89,10 @@
 // 情景模式数据字典
 @property (nonatomic, strong) NSMutableDictionary *modelSavedDic;
 // 拼接规格数据
+@property (nonatomic, assign) NSString  *appIPAddress;      // 20140917 by wh 服务端 IP
+@property (nonatomic, assign) NSString  *appCmdIPAddress;   // 20140917 by wh 命令控制器 IP
+@property (nonatomic, assign) NSInteger appPortNumber;      // 20140917 by wh 服务端 Port
+@property (nonatomic, assign) NSInteger appCmdPortNumber;   // 20140917 by wh 命令控制器端口
 @property (nonatomic, assign) NSInteger appRows;            // 行数
 @property (nonatomic, assign) NSInteger appColumns;         // 列数
 @property (nonatomic, assign) NSInteger appUnitWidth;       // 单元宽度
@@ -102,9 +112,9 @@
 // 初始化
 - (void)appDefaultInit;
 // 情景保存图片存储
-- (void)saveModelImage:(UIImage *)image toIndex:(int)nIndex;
+- (void)saveModelImage:(UIImage *)image toIndex:(NSInteger)nIndex;
 // 情景保存图片删除
-- (void)deleteModelImageAtIndex:(int)nIndex;
+- (void)deleteModelImageAtIndex:(NSInteger)nIndex;
 // 保存程序基本数据
 - (void)appDefaultDatasSave;
 // 计算区域矩形

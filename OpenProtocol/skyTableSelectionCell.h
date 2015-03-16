@@ -16,13 +16,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnHDMI;
 @property (strong, nonatomic) IBOutlet UIButton *btnDVI;
 @property (strong, nonatomic) IBOutlet UIButton *btnVGA;
-@property (assign, nonatomic) int selectionIndex;
+@property (assign, nonatomic) NSInteger selectionIndex;
 
 //////////////////// Methods ////////////////////////////
 // 获取选择状态
-- (int)getCurrentSelectionType;
+- (NSInteger)getCurrentSelectionType;
 // 设置选择状态
-- (void)setCurrentSelectionType:(int)nType;
+- (void)setCurrentSelectionType:(NSInteger)nType;
 
 //////////////////// Ends ///////////////////////////////
 

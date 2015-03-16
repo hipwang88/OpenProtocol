@@ -12,9 +12,9 @@
 @protocol skySettingSDKsDelegate <NSObject>
 
 // 获取协议类型
-- (int)getProtocolType;
+- (NSInteger)getProtocolType;
 // 设置协议类型
-- (void)setProtocolType:(int)nType;
+- (void)setProtocolType:(NSInteger)nType;
 
 @end
 

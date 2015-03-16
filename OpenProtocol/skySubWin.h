@@ -21,9 +21,9 @@
 // 保存窗口数据到文件
 - (void)saveSubWinDataSource:(id)sender;
 // 保存叠加窗口情景模式数据
-- (void)saveSubWinModelDataSource:(id)sender AtIndex:(int)nIndex;
+- (void)saveSubWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex;
 // 反序列化窗口情景模式
-- (void)loadSubWinModelDataSource:(id)sender AtIndex:(int)nIndex;
+- (void)loadSubWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex;
 
 @end
 
@@ -39,7 +39,7 @@
 // 子窗口位置改变
 - (void)subWinMove:(id)sender;
 // 信号切换
-- (void)subWin:(id)sender Signal:(int)nType SwitchTo:(int)nChannel;
+- (void)subWin:(id)sender Signal:(NSInteger)nType SwitchTo:(NSInteger)nChannel;
 // 获取数据代理
 - (id<skySignalViewDataSource>)subWinSignalDataSource;
 
@@ -50,9 +50,9 @@
 {
     // 漫游窗口属性
     BOOL bVisible;                                                  // 窗口是否显示
-    int nWinNumber;                                                 // 窗口编号
-    int nSourceType;                                                // 信号源类型
-    int nChannelNum;                                                // 矩阵通道
+    NSInteger nWinNumber;                                           // 窗口编号
+    NSInteger nSourceType;                                          // 信号源类型
+    NSInteger nChannelNum;                                          // 矩阵通道
     CGRect rectSub;                                                 // 叠加子窗位置与大小
     CGRect rectParent;                                              // 子窗父窗口的位置与大小 —— 限制子窗范围
     CGFloat fCentiStartX;                                           // 起始点与长宽 占父窗口的百分比
@@ -63,9 +63,9 @@
 
 //////////////////// Property ////////////////////////
 // 窗口属性
-@property (nonatomic, assign) int winNumber;                        // 窗口编号
-@property (nonatomic, assign) int winSourceType;                    // 信号类型
-@property (nonatomic, assign) int winChannelNum;                    // 矩阵通道
+@property (nonatomic, assign) NSInteger winNumber;                  // 窗口编号
+@property (nonatomic, assign) NSInteger winSourceType;              // 信号类型
+@property (nonatomic, assign) NSInteger winChannelNum;              // 矩阵通道
 @property (nonatomic, assign) CGRect limitRect;                     // 限制范围
 // 控制代理与数据代理
 @property (nonatomic, assign) id<skySubWinDelegate> delegate;       // 控制代理
@@ -81,17 +81,17 @@
 
 //////////////////// Methods /////////////////////////
 // 窗口数据初始化
-- (void)initializeSubWin:(int)nNum;
+- (void)initializeSubWin:(NSInteger)nNum;
 // 更新窗口
 - (void)updateWindowUI;
 // 保存窗口值
 - (void)saveSubWinToFile;
 // 切换矩阵
-- (void)switchSignal:(int)nType toChannel:(int)nChannel;
+- (void)switchSignal:(NSInteger)nType toChannel:(NSInteger)nChannel;
 // 计算窗口位置
 - (void)calculateSubWinFrame;
 // 添加子窗
-- (void)addSubWinWithParentFrame:(CGRect)parentFrame sourceType:(int)nType andChannel:(int)nChannel;
+- (void)addSubWinWithParentFrame:(CGRect)parentFrame sourceType:(NSInteger)nType andChannel:(NSInteger)nChannel;
 // 删除子窗口
 - (void)deleteSubWin;
 // 转换为可控制状态
@@ -99,9 +99,9 @@
 // 转换为不可控制状态
 - (void)changeToUnControllStatus;
 // 保存子窗的情景模式状态
-- (void)saveSubWinModelStatusAtIndex:(int)nIndex;
+- (void)saveSubWinModelStatusAtIndex:(NSInteger)nIndex;
 // 加载子窗情景模式
-- (void)loadSubWinModelStatusAtIndex:(int)nIndex;
+- (void)loadSubWinModelStatusAtIndex:(NSInteger)nIndex;
 
 //////////////////////////////////////////////////////
 // 属性函数

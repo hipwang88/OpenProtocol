@@ -22,30 +22,30 @@
 ///////////////////// Property /////////////////////////
 @property (nonatomic, strong) AsyncSocket *tcpSocket;               // Socket 对象
 @property (nonatomic, strong) NSString *serviceAddress;             // 服务器地址
-@property (nonatomic, assign) int nPort;                            // 服务器端口
+@property (nonatomic, assign) NSInteger nPort;                      // 服务器端口
 @property (nonatomic, strong) skyAppDelegate *appDelegate;
 
 ///////////////////// Methods //////////////////////////
 // 连接判断
 - (BOOL)isConnected;
 // 协议发送
-- (void)sendCmd:(int)nLength;
+- (void)sendCmd:(NSInteger)nLength;
 // 协议接收
-- (void)recevieCmd:(int)nLength;
+- (void)recevieCmd:(NSInteger)nLength;
 // 获取发送码字符串
-- (NSString *)sendStringWithLog:(NSString *)stringLog andByteCount:(int)nCount;
+- (NSString *)sendStringWithLog:(NSString *)stringLog andByteCount:(NSInteger)nCount;
 
 /*******************************************************/
 // 32626 关闭窗口指令
-- (void)TV_CloseWinsByX:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount;
+- (void)TV_CloseWinsByX:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount;
 // 32636 窗口信号切换指令
-- (void)TV_SwitchWin:(int)nWinNum SrcType:(int)nSrcType;
+- (void)TV_SwitchWin:(NSInteger)nWinNum SrcType:(NSInteger)nSrcType;
 // 32626 窗口拼接
-- (void)TV_SpliceWin:(int)nWinNum SrcType:(int)nSrcType X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount;
+- (void)TV_SpliceWin:(NSInteger)nWinNum SrcType:(NSInteger)nSrcType X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount;
 // HDMI 矩阵切换
-- (void)MATRIX_HDMI_SwitchInput:(int)nSrcPath X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount;
+- (void)MATRIX_HDMI_SwitchInput:(NSInteger)nSrcPath X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount;
 // CVBS 矩阵切换
-- (void)MATRIX_CVBS_SwitchInput:(int)nSrcPath X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount;
+- (void)MATRIX_CVBS_SwitchInput:(NSInteger)nSrcPath X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount;
 
 ///////////////////// Ends /////////////////////////////
 
@@ -83,7 +83,7 @@
 }
 
 // 连接TCP服务器
-- (BOOL)connectTCPService:(NSString *)hostAddress andPort:(int)nPortNum
+- (BOOL)connectTCPService:(NSString *)hostAddress andPort:(NSInteger)nPortNum
 {
     NSError *error;
     BOOL isConnected = NO;
@@ -110,7 +110,7 @@
             // 设置运行循环模式
             [_tcpSocket setRunLoopModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
             
-            LOG_MESSAGE([NSString stringWithFormat:@"Connect to %@ onPort %d Successful!",hostAddress,nPortNum],nil);
+            LOG_MESSAGE([NSString stringWithFormat:@"Connect to %@ onPort %ld Successful!",hostAddress,nPortNum],nil);
         }
     }
     return m_bConnection;
@@ -149,7 +149,7 @@
             // 设置运行循环模式
             [_tcpSocket setRunLoopModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
             
-            LOG_MESSAGE([NSString stringWithFormat:@"Reconnect to %@ onPort %d Successful!",_serviceAddress,_nPort],nil);
+            LOG_MESSAGE([NSString stringWithFormat:@"Reconnect to %@ onPort %ld Successful!",_serviceAddress,_nPort],nil);
         }
     }
 }
@@ -170,7 +170,7 @@
 }
 
 // 协议发送
-- (void)sendCmd:(int)nLength
+- (void)sendCmd:(NSInteger)nLength
 {
     NSData *sendData;
     // 在连接可用情况下发送指令
@@ -187,7 +187,7 @@
 }
 
 // 协议接收
-- (void)recevieCmd:(int)nLength
+- (void)recevieCmd:(NSInteger)nLength
 {
     NSData *recevieData;
     // 在连接情况下才能读取
@@ -199,7 +199,7 @@
 }
 
 // 获取发送码字符串
-- (NSString *)sendStringWithLog:(NSString *)stringLog andByteCount:(int)nCount
+- (NSString *)sendStringWithLog:(NSString *)stringLog andByteCount:(NSInteger)nCount
 {
     NSString *stringResult;
     NSData *sendDatas = [[NSData alloc] initWithBytes:m_nSendCmd length:nCount];
@@ -211,9 +211,9 @@
 
 #pragma mark - Protocol Private
 // 32626 关闭窗口指令
-- (void)TV_CloseWinsByX:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount
+- (void)TV_CloseWinsByX:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount
 {
-    int nColumn,nStartPanel;
+    NSInteger nColumn,nStartPanel;
     nColumn = _appDelegate.theApp.appColumns;
     nStartPanel = nStartY*nColumn + nStartX;
     
@@ -242,13 +242,13 @@
     [self sendCmd:20];
     
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"32626 先关闭窗口 Start:%d Row:%d Column:%d",nStartPanel,nVCount,nHCount] andByteCount:20],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"32626 先关闭窗口 Start:%ld Row:%ld Column:%ld",nStartPanel,nVCount,nHCount] andByteCount:20],nil);
 }
 
 // 32626 窗口信号切换
-- (void)TV_SwitchWin:(int)nWinNum SrcType:(int)nSrcType
+- (void)TV_SwitchWin:(NSInteger)nWinNum SrcType:(NSInteger)nSrcType
 {
-    int nType;
+    NSInteger nType;
     switch (nSrcType) {
         case 0:
         case 1:
@@ -283,13 +283,13 @@
     [self sendCmd:20];
     
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"32626 切换窗口%d 信号源-%d",nWinNum,nType] andByteCount:20],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"32626 切换窗口%ld 信号源-%ld",nWinNum,nType] andByteCount:20],nil);
 }
 
 // 32626 窗口拼接
-- (void)TV_SpliceWin:(int)nWinNum SrcType:(int)nSrcType X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount
+- (void)TV_SpliceWin:(NSInteger)nWinNum SrcType:(NSInteger)nSrcType X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount
 {
-    int nColumn,nStartPanel;
+    NSInteger nColumn,nStartPanel;
     nColumn = _appDelegate.theApp.appColumns;
     nStartPanel = nStartY*nColumn + nStartX;
     
@@ -331,13 +331,13 @@
     [self sendCmd:20];
     
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"窗口%d 拼接 起始:%d 横向跨屏:%d 纵向跨屏:%d",nWinNum,nStartPanel,nHCount,nVCount] andByteCount:20],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"窗口%ld 拼接 起始:%ld 横向跨屏:%ld 纵向跨屏:%ld",nWinNum,nStartPanel,nHCount,nVCount] andByteCount:20],nil);
 }
 
 // HDMI 矩阵切换
-- (void)MATRIX_HDMI_SwitchInput:(int)nSrcPath X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount
+- (void)MATRIX_HDMI_SwitchInput:(NSInteger)nSrcPath X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount
 {
-    int nRow,nColumn,nCount,nIndex;
+    NSInteger nRow,nColumn,nCount,nIndex;
     nRow = _appDelegate.theApp.appRows;
     nColumn = _appDelegate.theApp.appColumns;
     nCount = nHCount * nVCount;
@@ -349,7 +349,7 @@
         nIndex = (nStartY+i)*nColumn + nStartX + 6;
         for (int j = 0; j < nHCount; j++)
         {
-            [outputArray addObject:[NSNumber numberWithInt:nIndex]];
+            [outputArray addObject:[NSNumber numberWithLong:nIndex]];
             nIndex ++;
         }
     }
@@ -431,9 +431,9 @@
 }
 
 // CVBS 矩阵切换
-- (void)MATRIX_CVBS_SwitchInput:(int)nSrcPath X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount
+- (void)MATRIX_CVBS_SwitchInput:(NSInteger)nSrcPath X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount
 {
-    int nRow,nColumn,nCount,nIndex;
+    NSInteger nRow,nColumn,nCount,nIndex;
     nRow = _appDelegate.theApp.appRows;
     nColumn = _appDelegate.theApp.appColumns;
     nCount = nHCount * nVCount;
@@ -445,7 +445,7 @@
         nIndex = (nStartY+i)*nColumn + nStartX + 5;
         for (int j = 0; j < nHCount; j++)
         {
-            [outputArray addObject:[NSNumber numberWithInt:nIndex]];
+            [outputArray addObject:[NSNumber numberWithLong:nIndex]];
             nIndex ++;
         }
     }
@@ -529,7 +529,7 @@
 #pragma mark - Protocol Public
 /*******************************************************/
 // 1.控制器设置
-- (void)scxControllerSetRow:(int)nRow Column:(int)nColumn Resolution:(int)nRes
+- (void)scxControllerSetRow:(NSInteger)nRow Column:(NSInteger)nColumn Resolution:(NSInteger)nRes
 {
     // 先向单片机发送初始指令
     memset(m_nSendCmd, 0, sizeof(m_nSendCmd));
@@ -543,7 +543,7 @@
     m_nSendCmd[7] = 0xFF;
     [self sendCmd:8];
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"SCM InitController Row:%d Column:%d Resolution:%d",nRow,nColumn,nRes] andByteCount:8],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"SCM InitController Row:%ld Column:%ld Resolution:%ld",nRow,nColumn,nRes] andByteCount:8],nil);
     
     // 再向机芯发送初始指令
     memset(m_nSendCmd, 0, sizeof(m_nSendCmd));
@@ -567,7 +567,7 @@
     m_nSendCmd[18] = 0xFF;
     [self sendCmd:20];
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"32626 InitController Row:%d Column:%d Resolution:%d",nRow,nColumn,nRes] andByteCount:20],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"32626 InitController Row:%ld Column:%ld Resolution:%ld",nRow,nColumn,nRes] andByteCount:20],nil);
 }
 
 // 2.蜂鸣器开关
@@ -677,7 +677,7 @@
 }
 
 // 8.情景保存
-- (void)scxSaveModelAtIndex:(int)nIndex
+- (void)scxSaveModelAtIndex:(NSInteger)nIndex
 {
     // 协议命令
     memset(m_nSendCmd, 0, sizeof(m_nSendCmd));
@@ -692,12 +692,12 @@
     [self sendCmd:8];
     
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"情景模式%d保存",nIndex] andByteCount:8],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"情景模式%ld保存",nIndex] andByteCount:8],nil);
 
 }
 
 // 9.情景加载
-- (void)scxLoadModelAtIndex:(int)nIndex
+- (void)scxLoadModelAtIndex:(NSInteger)nIndex
 {
     // 协议命令
     memset(m_nSendCmd, 0, sizeof(m_nSendCmd));
@@ -712,11 +712,11 @@
     [self sendCmd:8];
     
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"情景模式%d加载",nIndex] andByteCount:8],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"情景模式%ld加载",nIndex] andByteCount:8],nil);
 }
 
 // 10.情景删除
-- (void)scxDeleteModelAtIndex:(int)nIndex
+- (void)scxDeleteModelAtIndex:(NSInteger)nIndex
 {
     // 协议命令
     memset(m_nSendCmd, 0, sizeof(m_nSendCmd));
@@ -731,11 +731,11 @@
     [self sendCmd:8];
     
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"情景模式%d删除",nIndex] andByteCount:8],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"情景模式%ld删除",nIndex] andByteCount:8],nil);
 }
 
 // 11.普通窗口信号切换
-- (void)scxSignalSwitchSCXWin:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount
+- (void)scxSignalSwitchSCXWin:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount
 {
     // 先切换机芯状态
     [self TV_SwitchWin:nWinID SrcType:nSrcType];
@@ -754,19 +754,19 @@
 }
 
 // 12.叠加底图窗口信号切换
-- (void)scxSignalSwitchOpenUnderWin:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath
+- (void)scxSignalSwitchOpenUnderWin:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath
 {
     
 }
 
 // 13.叠加子窗口信号切换
-- (void)scxSignalSwitchSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath
+- (void)scxSignalSwitchSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath
 {
     
 }
 
 // 14.大画面拼接
-- (void)scxSpliceSCXWin:(int)nWinID X:(int)nStartX Y:(int)nStartY VScreen:(int)nVCount HScreen:(int)nHCount ofType:(int)nSrcType toChannel:(int)nSrcPath
+- (void)scxSpliceSCXWin:(NSInteger)nWinID X:(NSInteger)nStartX Y:(NSInteger)nStartY VScreen:(NSInteger)nVCount HScreen:(NSInteger)nHCount ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath
 {
     // 先切换矩阵
     switch (nSrcType) {
@@ -785,9 +785,9 @@
 }
 
 // 15.大画面分解
-- (void)scxResolveSCXWin:(int)nWinID X:(int)nStartX Y:(int)nStartY H:(int)nHCount V:(int)nVCount
+- (void)scxResolveSCXWin:(NSInteger)nWinID X:(NSInteger)nStartX Y:(NSInteger)nStartY H:(NSInteger)nHCount V:(NSInteger)nVCount
 {
-    int nColumn,nStartPanel;
+    NSInteger nColumn,nStartPanel;
     nColumn = _appDelegate.theApp.appColumns;
     nStartPanel = nStartY*nColumn + nStartX;
     
@@ -816,41 +816,41 @@
     [self sendCmd:20];
     
     // 信息
-    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"窗口%d 分解 起始:%d 横向跨屏:%d 纵向跨屏:%d",nWinID,nStartPanel,nHCount,nVCount] andByteCount:20],nil);
+    LOG_MESSAGE([self sendStringWithLog:[NSString stringWithFormat:@"窗口%ld 分解 起始:%ld 横向跨屏:%ld 纵向跨屏:%ld",nWinID,nStartPanel,nHCount,nVCount] andByteCount:20],nil);
 }
 
 // 16.进入叠加开窗
-- (void)scxEnterOpenStatus:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath
+- (void)scxEnterOpenStatus:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath
 {
     
 }
 
 // 17.退出叠加开窗
-- (void)scxLeaveOpenStatus:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath
+- (void)scxLeaveOpenStatus:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath
 {
     
 }
 
 // 18.添加子窗口
-- (void)scxAddSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath
+- (void)scxAddSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath
 {
     
 }
 
 // 19.关闭子窗口
-- (void)scxDeleteSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath
+- (void)scxDeleteSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath
 {
     
 }
 
 // 20.移动子窗口
-- (void)scxMoveSubWin:(int)nSubID StartX:(int)nStartX StartY:(int)nStartY
+- (void)scxMoveSubWin:(NSInteger)nSubID StartX:(NSInteger)nStartX StartY:(NSInteger)nStartY
 {
     
 }
 
 // 21.缩放子窗口
-- (void)scxResizeSubWin:(int)nSubID WinWidth:(int)nWidth WinHeight:(int)nHeight
+- (void)scxResizeSubWin:(NSInteger)nSubID WinWidth:(NSInteger)nWidth WinHeight:(NSInteger)nHeight
 {
     
 }

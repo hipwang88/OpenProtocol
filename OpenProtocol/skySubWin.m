@@ -50,7 +50,7 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
 // 绘制窗口编号与信号源
 - (void)drawSubWinDatas:(CGContextRef)context;
 // 设置信号源与通道
-- (void)setSignal:(int)nType andChannel:(int)nChannel;
+- (void)setSignal:(NSInteger)nType andChannel:(NSInteger)nChannel;
 // 窗口移动
 - (void)moveSubWinUsingTouchLocation:(CGPoint)touchPoint;
 // 窗口缩放
@@ -178,25 +178,25 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
     [textColor set];
     
     // 编号标签
-    NSString *winNumString = [NSString stringWithFormat:@"Sub.%d",nWinNumber];
+    NSString *winNumString = [NSString stringWithFormat:@"Sub.%ld",nWinNumber];
     // 信号源标签
     NSString *signalString;
     switch (nSourceType)
     {
         case 0:// HDMI
-            signalString = [NSString stringWithFormat:@"HDMI-%d",nChannelNum];
+            signalString = [NSString stringWithFormat:@"HDMI-%ld",nChannelNum];
             break;
         case 1:// DVI
-            signalString = [NSString stringWithFormat:@"DVI-%d",nChannelNum];
+            signalString = [NSString stringWithFormat:@"DVI-%ld",nChannelNum];
             break;
         case 2:// VGA
-            signalString = [NSString stringWithFormat:@"VGA-%d",nChannelNum];
+            signalString = [NSString stringWithFormat:@"VGA-%ld",nChannelNum];
             break;
         case 3:// CVBS
-            signalString = [NSString stringWithFormat:@"CVBS-%d",nChannelNum];
+            signalString = [NSString stringWithFormat:@"CVBS-%ld",nChannelNum];
             break;
         case 4:// SDI
-            signalString = [NSString stringWithFormat:@"SDI-%d",nChannelNum];
+            signalString = [NSString stringWithFormat:@"SDI-%ld",nChannelNum];
             break;
     }
     
@@ -332,7 +332,7 @@ static skyResizableAnchorPoint resizableAnchorPointLowerMiddle = {0.0, 0.0, 1.0,
 }
 
 // 设置信号源与通道
-- (void)setSignal:(int)nType andChannel:(int)nChannel
+- (void)setSignal:(NSInteger)nType andChannel:(NSInteger)nChannel
 {
     nSourceType = nType;
     nChannelNum = nChannel;
@@ -475,7 +475,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 
 #pragma mark - Public Methods
 // 窗口数据初始化
-- (void)initializeSubWin:(int)nNum
+- (void)initializeSubWin:(NSInteger)nNum
 {
     // 设置初值
     nWinNumber = nNum;
@@ -520,7 +520,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 }
 
 // 切换矩阵
-- (void)switchSignal:(int)nType toChannel:(int)nChannel
+- (void)switchSignal:(NSInteger)nType toChannel:(NSInteger)nChannel
 {
     [self setSignal:nType andChannel:nChannel];
     
@@ -545,7 +545,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 }
 
 // 添加子窗
-- (void)addSubWinWithParentFrame:(CGRect)parentFrame sourceType:(int)nType andChannel:(int)nChannel
+- (void)addSubWinWithParentFrame:(CGRect)parentFrame sourceType:(NSInteger)nType andChannel:(NSInteger)nChannel
 {
     // 计算范围百分比
     switch (nWinNumber)
@@ -619,14 +619,14 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 }
 
 // 保存子窗的情景模式状态
-- (void)saveSubWinModelStatusAtIndex:(int)nIndex
+- (void)saveSubWinModelStatusAtIndex:(NSInteger)nIndex
 {
     // 叠加窗口情景数据保存
     [_dataSource saveSubWinModelDataSource:self AtIndex:nIndex];
 }
 
 // 加载子窗情景模式
-- (void)loadSubWinModelStatusAtIndex:(int)nIndex
+- (void)loadSubWinModelStatusAtIndex:(NSInteger)nIndex
 {
     // 反序列化
     [_dataSource loadSubWinModelDataSource:self AtIndex:nIndex];
@@ -709,7 +709,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
 
 #pragma mark - skySignalView Delegate
 // 进行信号切换
-- (void)haveSignal:(int)nType SwitchTo:(int)nNum
+- (void)haveSignal:(NSInteger)nType SwitchTo:(NSInteger)nNum
 {
     [_popView dismissPopoverAnimated:YES];
     

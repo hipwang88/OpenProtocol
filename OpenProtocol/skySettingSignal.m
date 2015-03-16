@@ -15,7 +15,7 @@
 
 @interface skySettingSignal ()
 {
-    int nCardNum;
+    NSInteger nCardNum;
 }
 
 // 初始化组件
@@ -127,7 +127,7 @@
 // Rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int nRowNumber = 0;
+    NSInteger nRowNumber = 0;
     
     if (section == 0)
     {
@@ -148,7 +148,7 @@
         skyTableStepperCell *cell = (skyTableStepperCell *)[tableView dequeueReusableCellWithIdentifier:kTableStepperCell];
         
         cell.labelTitle.text = @"板卡数目:";
-        cell.lableValue.text = [NSString stringWithFormat:@"%d",[_myDataSource getSignalCardNumbers]];
+        cell.lableValue.text = [NSString stringWithFormat:@"%ld",[_myDataSource getSignalCardNumbers]];
         cell.valueStepper.minimumValue = 1;
         cell.valueStepper.maximumValue = 24;
         cell.valueStepper.stepValue = 1;
@@ -163,7 +163,7 @@
     {
         skyTableSelectionCell *cell = (skyTableSelectionCell *)[tableView dequeueReusableCellWithIdentifier:kTableSelectionCell];
         
-        cell.cellTitle.text = [NSString stringWithFormat:@"Card.%d",indexPath.row+1];
+        cell.cellTitle.text = [NSString stringWithFormat:@"Card.%ld",indexPath.row+1];
         [cell setCurrentSelectionType:[_myDataSource getCardTypeAtIndex:indexPath.row+1]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         

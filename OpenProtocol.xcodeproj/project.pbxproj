@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061BD4BA19C996FE00794448 /* skyTVSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 061BD4B819C996FE00794448 /* skyTVSettingController.m */; };
+		061BD4BB19C996FE00794448 /* skyTVSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061BD4B919C996FE00794448 /* skyTVSettingController.xib */; };
+		0629F42D19CA809700E584D3 /* monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = 0629F42C19CA809700E584D3 /* monitor.png */; };
+		0674247B19C97DBE00F2F5A0 /* skyTVProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 0674247A19C97DBE00F2F5A0 /* skyTVProtocol.m */; };
 		06DBF2A41852094800F1351E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DBF2A31852094800F1351E /* Foundation.framework */; };
 		06DBF2A61852094800F1351E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DBF2A51852094800F1351E /* CoreGraphics.framework */; };
 		06DBF2A81852094800F1351E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DBF2A71852094800F1351E /* UIKit.framework */; };
@@ -121,6 +125,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		061BD4B719C996FE00794448 /* skyTVSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skyTVSettingController.h; sourceTree = "<group>"; };
+		061BD4B819C996FE00794448 /* skyTVSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = skyTVSettingController.m; sourceTree = "<group>"; };
+		061BD4B919C996FE00794448 /* skyTVSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = skyTVSettingController.xib; sourceTree = "<group>"; };
+		0629F42C19CA809700E584D3 /* monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitor.png; sourceTree = "<group>"; };
+		0674247919C97DBE00F2F5A0 /* skyTVProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skyTVProtocol.h; sourceTree = "<group>"; };
+		0674247A19C97DBE00F2F5A0 /* skyTVProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = skyTVProtocol.m; sourceTree = "<group>"; };
 		06DBF2A01852094800F1351E /* OpenProtocol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenProtocol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06DBF2A31852094800F1351E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DBF2A51852094800F1351E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -480,6 +490,8 @@
 				06DBF3CB18520D2500F1351E /* skySCXProtocol.m */,
 				06DBF3CC18520D2500F1351E /* skyOpenSCXProtocol.h */,
 				06DBF3CD18520D2500F1351E /* skyOpenSCXProtocol.m */,
+				0674247919C97DBE00F2F5A0 /* skyTVProtocol.h */,
+				0674247A19C97DBE00F2F5A0 /* skyTVProtocol.m */,
 			);
 			name = SDKs;
 			sourceTree = "<group>";
@@ -534,6 +546,7 @@
 				06DBF30018520B8D00F1351E /* toolbarDrawModeHide.png */,
 				06DBF30118520B8D00F1351E /* SMC_Logo.jpg */,
 				06DBF30218520B8D00F1351E /* background.bmp */,
+				0629F42C19CA809700E584D3 /* monitor.png */,
 				06DBF30318520B8D00F1351E /* ConnSet.png */,
 				06DBF30418520B8D00F1351E /* ProtocalSet.png */,
 				06DBF30518520B8D00F1351E /* SCXSet.png */,
@@ -580,6 +593,9 @@
 				06DBF38918520C9E00F1351E /* skySettingSDKs.h */,
 				06DBF38A18520C9E00F1351E /* skySettingSDKs.m */,
 				06DBF38B18520C9E00F1351E /* skySettingSDKs.xib */,
+				061BD4B719C996FE00794448 /* skyTVSettingController.h */,
+				061BD4B819C996FE00794448 /* skyTVSettingController.m */,
+				061BD4B919C996FE00794448 /* skyTVSettingController.xib */,
 			);
 			name = "Setting Popover";
 			sourceTree = "<group>";
@@ -647,11 +663,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = sky;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = skyworth;
 				TargetAttributes = {
-					06DBF2BA1852094800F1351E = {
-						TestTargetID = 06DBF29F1852094800F1351E;
+					06DBF29F1852094800F1351E = {
+						DevelopmentTeam = U87S956AM2;
 					};
 				};
 			};
@@ -684,6 +700,7 @@
 				06DBF32A18520B8D00F1351E /* toolbarDrawModeHide.png in Resources */,
 				06DBF31A18520B8D00F1351E /* UpAccessory@2x.png in Resources */,
 				06DBF31E18520B8D00F1351E /* Unit.png in Resources */,
+				0629F42D19CA809700E584D3 /* monitor.png in Resources */,
 				06DBF32F18520B8D00F1351E /* SCXSet.png in Resources */,
 				06DBF32318520B8D00F1351E /* scxWin_Btn_Normal.png in Resources */,
 				06DBF37C18520C9500F1351E /* skyModelView.xib in Resources */,
@@ -728,6 +745,7 @@
 				06DBF30818520B8D00F1351E /* CVBSCardNormal.png in Resources */,
 				06DBF3C018520CFF00F1351E /* skyTableSelectionCell.xib in Resources */,
 				06DBF31218520B8D00F1351E /* signal_DVI-Small.png in Resources */,
+				061BD4BB19C996FE00794448 /* skyTVSettingController.xib in Resources */,
 				06DBF32D18520B8D00F1351E /* ConnSet.png in Resources */,
 				06DBF3BA18520CFF00F1351E /* skyModelCell.xib in Resources */,
 				06DBF32618520B8D00F1351E /* appIcon-72@2x.png in Resources */,
@@ -756,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0674247B19C97DBE00F2F5A0 /* skyTVProtocol.m in Sources */,
 				06DBF38C18520C9E00F1351E /* skySettingMainView.m in Sources */,
 				06DBF38E18520C9E00F1351E /* skySettingConnection.m in Sources */,
 				06DBF33818520BBB00F1351E /* skyExternViewController.m in Sources */,
@@ -771,6 +790,7 @@
 				06DBF34818520BD300F1351E /* skyUnderPaint.m in Sources */,
 				06DBF39218520C9E00F1351E /* skySettingSignal.m in Sources */,
 				06DBF39D18520CE600F1351E /* skySubWinPopover.m in Sources */,
+				061BD4BA19C996FE00794448 /* skyTVSettingController.m in Sources */,
 				06DBF33718520BBB00F1351E /* skyViewController.m in Sources */,
 				06DBF3BB18520CFF00F1351E /* skyTableStepperCell.m in Sources */,
 				06DBF3B318520CFF00F1351E /* skyTableButtonCell.m in Sources */,
@@ -833,7 +853,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -846,8 +865,10 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = v1.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -864,6 +885,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "创维智能拼控";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -873,7 +895,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -886,8 +907,10 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = v1.1;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -897,6 +920,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "创维智能拼控";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -908,13 +933,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wang Hao (U87S956AM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wang Hao (U87S956AM2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenProtocol/OpenProtocol-Prefix.pch";
 				INFOPLIST_FILE = "OpenProtocol/OpenProtocol-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3a1afe8b-25ef-4dd8-8f23-77d5a3a6d623";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -924,13 +953,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wang Hao (U87S956AM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wang Hao (U87S956AM2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenProtocol/OpenProtocol-Prefix.pch";
 				INFOPLIST_FILE = "OpenProtocol/OpenProtocol-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3a1afe8b-25ef-4dd8-8f23-77d5a3a6d623";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -938,8 +971,7 @@
 		06DBF2D01852094800F1351E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenProtocol.app/OpenProtocol";
+				CODE_SIGN_ENTITLEMENTS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -953,7 +985,6 @@
 				);
 				INFOPLIST_FILE = "OpenProtocolTests/OpenProtocolTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -961,8 +992,7 @@
 		06DBF2D11852094800F1351E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenProtocol.app/OpenProtocol";
+				CODE_SIGN_ENTITLEMENTS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -972,7 +1002,6 @@
 				GCC_PREFIX_HEADER = "OpenProtocol/OpenProtocol-Prefix.pch";
 				INFOPLIST_FILE = "OpenProtocolTests/OpenProtocolTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -996,6 +1025,7 @@
 				06DBF2CE1852094800F1351E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		06DBF2CF1852094800F1351E /* Build configuration list for PBXNativeTarget "OpenProtocolTests" */ = {
 			isa = XCConfigurationList;
@@ -1004,6 +1034,7 @@
 				06DBF2D11852094800F1351E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

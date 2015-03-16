@@ -24,6 +24,10 @@
 
 @synthesize appDefaultsDic = _appDefaultsDic;
 @synthesize appSignalDic = _appSignalDic;
+@synthesize appIPAddress = _appIPAddress;
+@synthesize appCmdIPAddress = _appCmdIPAddress;
+@synthesize appPortNumber = _appPortNumber;
+@synthesize appCmdPortNumber = _appCmdPortNumber;
 @synthesize appRows = _appRows;
 @synthesize appColumns = _appColumns;
 @synthesize appUnitWidth = _appUnitWidth;
@@ -66,9 +70,9 @@
 }
 
 // 情景保存图片存储
-- (void)saveModelImage:(UIImage *)image toIndex:(int)nIndex
+- (void)saveModelImage:(UIImage *)image toIndex:(NSInteger)nIndex
 {
-    NSString *modelKey = [NSString stringWithFormat:@"Model-%d",nIndex+1];
+    NSString *modelKey = [NSString stringWithFormat:@"Model-%ld",nIndex+1];
     // 将情景标志置换
     [_modelSavedDic setObject:@"1" forKey:modelKey];
     
@@ -77,9 +81,9 @@
 }
 
 // 情景保存图片删除
-- (void)deleteModelImageAtIndex:(int)nIndex
+- (void)deleteModelImageAtIndex:(NSInteger)nIndex
 {
-    NSString *modelKey = [NSString stringWithFormat:@"Model-%d",nIndex+1];
+    NSString *modelKey = [NSString stringWithFormat:@"Model-%ld",nIndex+1];
     // 将情景标志置换
     [_modelSavedDic setObject:@"0" forKey:modelKey];
     
@@ -97,20 +101,24 @@
     NSString *appDefaultFileName = [appDefaultDir stringByAppendingPathComponent:APPDEFAULTFILE];
     
     // 保存数据
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appRows] forKey:kAPPROWS];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appColumns] forKey:kAPPCOLUMNS];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appUnitWidth] forKey:kAPPUNITWIDTH];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appUnitHeight] forKey:kAPPUNITHEIGHT];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appScreenWidth] forKey:kAPPSCREENWIDTH];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appScreenHeight] forKey:kAPPSCREENHEIGHT];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appControllerType] forKey:kAPPCONTROLLERTYPE];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appCardNum] forKey:kAPPCARDCOUNT];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appResolution] forKey:kAPPRESOLUTION];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%@",_appIPAddress] forKey:kAPPIPADDRESS];           // 20140917 by wh
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appPortNumber] forKey:kAPPPORTNUMBER];         // 20140917 by wh
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%@",_appCmdIPAddress] forKey:kAPPCMDIPADDRESS];     // 20140917 by wh
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appCmdPortNumber] forKey:kAPPCMDPORTNUMBER];   // 20140917 by wh
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appRows] forKey:kAPPROWS];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appColumns] forKey:kAPPCOLUMNS];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appUnitWidth] forKey:kAPPUNITWIDTH];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appUnitHeight] forKey:kAPPUNITHEIGHT];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appScreenWidth] forKey:kAPPSCREENWIDTH];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appScreenHeight] forKey:kAPPSCREENHEIGHT];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appControllerType] forKey:kAPPCONTROLLERTYPE];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appCardNum] forKey:kAPPCARDCOUNT];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appResolution] forKey:kAPPRESOLUTION];
     [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appPowerSave ? 1 : 0] forKey:kAPPPOWERSAVE];
     [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appTemperature ? 1 : 0] forKey:kAPPTEMPERATURE];
     [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appStraight ? 1 : 0] forKey:kAPPSTRAIGHT];
     [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appBuzzer ? 1 : 0] forKey:kAPPBUZZER];
-    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appProtocolType] forKey:kAPPPROTOCOLTYPE];
+    [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appProtocolType] forKey:kAPPPROTOCOLTYPE];
     
     // 写入文件
     [_appDefaultsDic writeToFile:appDefaultFileName atomically:YES];
@@ -185,43 +193,57 @@
         // 创建字典
         self.appDefaultsDic = [[NSMutableDictionary alloc] init];
         
-        _appRows = 3;
-        _appColumns = 4;
+        _appRows = 2;
+        _appColumns = 3;
         
         // 主控区域计算
         [self calculateScreenSize];
         
         // 设置控制器类型  1 - 16*16(6 cards 2 cvbs)       2 - 32*32(12 cards 4 cvbs)       3 - 64*64(24 cards 8 cvbs)
-        _appControllerType = 2;
-        _appCardNum = 6;
+        _appControllerType = 1;
+        _appCardNum = 5;
         _appResolution = 6;
         _appPowerSave = YES;
         _appTemperature = NO;
         _appStraight = NO;
         _appBuzzer = YES;
         _appProtocolType = 1;
+        // 20140917 by wh 服务端 IP Port
+        _appIPAddress = @"172.16.16.7";
+        _appPortNumber = 5000;
+        // 20140917 by wh 命令控制器服务端 IP Port
+        _appCmdIPAddress = @"172.16.16.114";
+        _appCmdPortNumber = 5000;
         
-        // 保存数据 
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appRows] forKey:kAPPROWS];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appColumns] forKey:kAPPCOLUMNS];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appUnitWidth] forKey:kAPPUNITWIDTH];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appUnitHeight] forKey:kAPPUNITHEIGHT];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appScreenWidth] forKey:kAPPSCREENWIDTH];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appScreenHeight] forKey:kAPPSCREENHEIGHT];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appControllerType] forKey:kAPPCONTROLLERTYPE];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appCardNum] forKey:kAPPCARDCOUNT];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appResolution] forKey:kAPPRESOLUTION];
+        // 保存数据
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%@",_appIPAddress] forKey:kAPPIPADDRESS];           // 20140917 by wh
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appPortNumber] forKey:kAPPPORTNUMBER];         // 20140917 by wh
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%@",_appCmdIPAddress] forKey:kAPPCMDIPADDRESS];     // 20140917 by wh
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appCmdPortNumber] forKey:kAPPCMDPORTNUMBER];   // 20140917 by wh
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appRows] forKey:kAPPROWS];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appColumns] forKey:kAPPCOLUMNS];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appUnitWidth] forKey:kAPPUNITWIDTH];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appUnitHeight] forKey:kAPPUNITHEIGHT];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appScreenWidth] forKey:kAPPSCREENWIDTH];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appScreenHeight] forKey:kAPPSCREENHEIGHT];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appControllerType] forKey:kAPPCONTROLLERTYPE];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appCardNum] forKey:kAPPCARDCOUNT];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appResolution] forKey:kAPPRESOLUTION];
         [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appPowerSave ? 1 : 0] forKey:kAPPPOWERSAVE];
         [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appTemperature ? 1 : 0] forKey:kAPPTEMPERATURE];
         [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appStraight ? 1 : 0] forKey:kAPPSTRAIGHT];
         [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appBuzzer ? 1 : 0] forKey:kAPPBUZZER];
-        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%d",_appProtocolType] forKey:kAPPPROTOCOLTYPE];
+        [_appDefaultsDic setObject:[NSString stringWithFormat:@"%ld",_appProtocolType] forKey:kAPPPROTOCOLTYPE];
         
         // 写入文件
         [_appDefaultsDic writeToFile:appDefaultFileName atomically:YES];
     }
     else
-    {        
+    {
+        _appIPAddress = [_appDefaultsDic objectForKey:kAPPIPADDRESS];                           // 20140917 by wh
+        _appPortNumber = [[_appDefaultsDic objectForKey:kAPPPORTNUMBER] integerValue];          // 20140917 by wh
+        _appCmdIPAddress = [_appDefaultsDic objectForKey:kAPPCMDIPADDRESS];                     // 20140917 by wh
+        _appCmdPortNumber = [[_appDefaultsDic objectForKey:kAPPCMDPORTNUMBER] integerValue];    // 20140917 by wh
         _appRows = [[_appDefaultsDic objectForKey:kAPPROWS] integerValue];
         _appColumns = [[_appDefaultsDic objectForKey:kAPPCOLUMNS] integerValue];
         _appUnitWidth = [[_appDefaultsDic objectForKey:kAPPUNITWIDTH] integerValue];
@@ -261,7 +283,7 @@
         {
             // 板卡键值
             NSString *cardTypeKeys = [NSString stringWithFormat:@"Card-%d",i];
-            int nValue;
+            NSInteger nValue;
             
             // 分配板卡类型
             if (i <= (int)pow(2, _appControllerType))
@@ -274,7 +296,7 @@
             }
             
             // 写入字典
-            [_appSignalDic setObject:[NSString stringWithFormat:@"%d",nValue] forKey:cardTypeKeys];
+            [_appSignalDic setObject:[NSString stringWithFormat:@"%ld",nValue] forKey:cardTypeKeys];
         }
         
         // 将字典记录进文件
@@ -318,7 +340,7 @@
     for (int i = 1; i <= 18; i++)
     {
         NSString *modelKey = [NSString stringWithFormat:@"Model-%d",i];
-        int nValue = [[_modelSavedDic objectForKey:modelKey] integerValue];
+        NSInteger nValue = [[_modelSavedDic objectForKey:modelKey] integerValue];
         UIImage *image;
         NSString *imagePath = [appModelImageDir stringByAppendingPathComponent:[NSString stringWithFormat:@"model_%d.png",i]];
 
@@ -341,13 +363,13 @@
 - (void)initSCXWinDataSource:(id)sender
 {
     skySCXWin *scxWin = (skySCXWin *)sender;
-    int nWinNum = scxWin.winNumber;
+    NSInteger nWinNum = scxWin.winNumber;
     
     // 一个窗口一个文件 漫游窗口 skySCXWin_X X-nWinNum
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *appStandardDir = [appDefaultsPath stringByAppendingPathComponent:@"AppStandard"];
     [[NSFileManager defaultManager] createDirectoryAtPath:appStandardDir withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%d",nWinNum]];
+    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%ld",nWinNum]];
     
     // 字典
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:appDefaultFileName];
@@ -384,12 +406,12 @@
         [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinResize] ? 1:0] forKey:kSCXWINRESIZE];
         [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBigPicture] ? 1:0] forKey:kSCXWINBIGPICTURE];
         [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinOpen] ? 1:0] forKey:kSCXWINOPENWIN];
-        [dict setObject:[NSString stringWithFormat:@"%d",scxWin.winSourceType] forKey:kSCXWINSIGNALTYPE];
-        [dict setObject:[NSString stringWithFormat:@"%d",scxWin.winChannelNum] forKey:kSCXWINCHANNELNUM];
-        [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBasicWinWidth]] forKey:kSCXWINBWIDTH];
-        [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBasicWinHeight]] forKey:kSCXWINBHEIGHT];
-        [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinCurrentWinWidth]] forKey:kSCXWINCWIDTH];
-        [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinCurrentWinHeight]] forKey:kSCXWINCHEIGHT];
+        [dict setObject:[NSString stringWithFormat:@"%ld",scxWin.winSourceType] forKey:kSCXWINSIGNALTYPE];
+        [dict setObject:[NSString stringWithFormat:@"%ld",scxWin.winChannelNum] forKey:kSCXWINCHANNELNUM];
+        [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinBasicWinWidth]] forKey:kSCXWINBWIDTH];
+        [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinBasicWinHeight]] forKey:kSCXWINBHEIGHT];
+        [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinCurrentWinWidth]] forKey:kSCXWINCWIDTH];
+        [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinCurrentWinHeight]] forKey:kSCXWINCHEIGHT];
         
         // 写入文件
         [dict writeToFile:appDefaultFileName atomically:YES];
@@ -416,13 +438,13 @@
 - (void)saveSCXWinDataSource:(id)sender
 {
     skySCXWin *scxWin = (skySCXWin *)sender;
-    int nWinNum = scxWin.winNumber;
+    NSInteger nWinNum = scxWin.winNumber;
     
     // 一个窗口一个文件 漫游窗口 skySCXWin_X X-nWinNum
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *appStandardDir = [appDefaultsPath stringByAppendingPathComponent:@"AppStandard"];
     [[NSFileManager defaultManager] createDirectoryAtPath:appStandardDir withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%d",nWinNum]];
+    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%ld",nWinNum]];
     // 字典
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
@@ -435,29 +457,29 @@
     [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinResize] ? 1:0] forKey:kSCXWINRESIZE];
     [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBigPicture] ? 1:0] forKey:kSCXWINBIGPICTURE];
     [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinOpen] ? 1:0] forKey:kSCXWINOPENWIN];
-    [dict setObject:[NSString stringWithFormat:@"%d",scxWin.winSourceType] forKey:kSCXWINSIGNALTYPE];
-    [dict setObject:[NSString stringWithFormat:@"%d",scxWin.winChannelNum] forKey:kSCXWINCHANNELNUM];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBasicWinWidth]] forKey:kSCXWINBWIDTH];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBasicWinHeight]] forKey:kSCXWINBHEIGHT];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinCurrentWinWidth]] forKey:kSCXWINCWIDTH];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinCurrentWinHeight]] forKey:kSCXWINCHEIGHT];
+    [dict setObject:[NSString stringWithFormat:@"%ld",scxWin.winSourceType] forKey:kSCXWINSIGNALTYPE];
+    [dict setObject:[NSString stringWithFormat:@"%ld",scxWin.winChannelNum] forKey:kSCXWINCHANNELNUM];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinBasicWinWidth]] forKey:kSCXWINBWIDTH];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinBasicWinHeight]] forKey:kSCXWINBHEIGHT];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinCurrentWinWidth]] forKey:kSCXWINCWIDTH];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinCurrentWinHeight]] forKey:kSCXWINCHEIGHT];
     
     // 将字典写入文件
     [dict writeToFile:appDefaultFileName atomically:YES];
 }
 
 // 窗口的情景数据序列化到文件
-- (void)saveSCXWinModelDataSource:(id)sender AtIndex:(int)nIndex
+- (void)saveSCXWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex
 {
     skySCXWin *scxWin = (skySCXWin *)sender;
-    int nWinNum = scxWin.winNumber;
+    NSInteger nWinNum = scxWin.winNumber;
     
     // 创建模式文件夹
-    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%d",nIndex];
+    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%ld",nIndex];
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *modelDirPath = [appDefaultsPath stringByAppendingPathComponent:modelPath];
     [[NSFileManager defaultManager] createDirectoryAtPath:modelDirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%d",nWinNum]];
+    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%ld",nWinNum]];
     
     // 保存窗口数据
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -469,29 +491,29 @@
     [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinResize] ? 1:0] forKey:kSCXWINRESIZE];
     [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBigPicture] ? 1:0] forKey:kSCXWINBIGPICTURE];
     [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinOpen] ? 1:0] forKey:kSCXWINOPENWIN];
-    [dict setObject:[NSString stringWithFormat:@"%d",scxWin.winSourceType] forKey:kSCXWINSIGNALTYPE];
-    [dict setObject:[NSString stringWithFormat:@"%d",scxWin.winChannelNum] forKey:kSCXWINCHANNELNUM];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBasicWinWidth]] forKey:kSCXWINBWIDTH];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinBasicWinHeight]] forKey:kSCXWINBHEIGHT];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinCurrentWinWidth]] forKey:kSCXWINCWIDTH];
-    [dict setObject:[NSString stringWithFormat:@"%d",[scxWin getSCXWinCurrentWinHeight]] forKey:kSCXWINCHEIGHT];
+    [dict setObject:[NSString stringWithFormat:@"%ld",scxWin.winSourceType] forKey:kSCXWINSIGNALTYPE];
+    [dict setObject:[NSString stringWithFormat:@"%ld",scxWin.winChannelNum] forKey:kSCXWINCHANNELNUM];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinBasicWinWidth]] forKey:kSCXWINBWIDTH];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinBasicWinHeight]] forKey:kSCXWINBHEIGHT];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinCurrentWinWidth]] forKey:kSCXWINCWIDTH];
+    [dict setObject:[NSString stringWithFormat:@"%ld",[scxWin getSCXWinCurrentWinHeight]] forKey:kSCXWINCHEIGHT];
     
     // 将字典数据写入文件
     [dict writeToFile:savePath atomically:YES];
 }
 
 // 反序列化窗口情景模式
-- (void)loadSCXWinModelDataSource:(id)sender AtIndex:(int)nIndex
+- (void)loadSCXWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex
 {
     skySCXWin *scxWin = (skySCXWin *)sender;
-    int nWinNum = scxWin.winNumber;
+    NSInteger nWinNum = scxWin.winNumber;
     
     // 创建模式文件夹
-    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%d",nIndex];
+    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%ld",nIndex];
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *modelDirPath = [appDefaultsPath stringByAppendingPathComponent:modelPath];
     [[NSFileManager defaultManager] createDirectoryAtPath:modelDirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%d",nWinNum]];
+    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySCXWin_%ld",nWinNum]];
     
     // 字典
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:savePath];
@@ -516,13 +538,13 @@
 - (void)initSubWinDataSource:(id)sender
 {
     skySubWin *subWin = (skySubWin *)sender;
-    int nNum = subWin.winNumber;
+    NSInteger nNum = subWin.winNumber;
     
     // 一个叠加窗口一个保存文件 文件名：skySubWin_X X-编号
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *appStandardDir = [appDefaultsPath stringByAppendingPathComponent:@"AppStandard"];
     [[NSFileManager defaultManager] createDirectoryAtPath:appStandardDir withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%d",nNum]];
+    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%ld",nNum]];
     // 保存字典
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:appDefaultFileName];
     
@@ -548,8 +570,8 @@
         
         // 将数据写入字典
         [dict setObject:[NSString stringWithFormat:@"%d",[subWin getSubWinVisible] ? 1 : 0] forKey:kSUBWINSHOWOUT];
-        [dict setObject:[NSString stringWithFormat:@"%d",subWin.winSourceType] forKey:kSUBWINSIGNALTYPE];
-        [dict setObject:[NSString stringWithFormat:@"%d",subWin.winChannelNum] forKey:kSUBWINCHANNELNUM];
+        [dict setObject:[NSString stringWithFormat:@"%ld",subWin.winSourceType] forKey:kSUBWINSIGNALTYPE];
+        [dict setObject:[NSString stringWithFormat:@"%ld",subWin.winChannelNum] forKey:kSUBWINCHANNELNUM];
         [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.origin.x] forKey:kSUBWINPARENTSTARTX];
         [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.origin.y] forKey:KSUBWINPARENTSTARTY];
         [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.size.width] forKey:kSUBWINPARENTWIDTH];
@@ -581,21 +603,21 @@
 {
     // 获取传入的窗口对象
     skySubWin *subWin = (skySubWin *)sender;
-    int nNum = subWin.winNumber;
+    NSInteger nNum = subWin.winNumber;
     
     // 存入文件索引
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *appStandardDir = [appDefaultsPath stringByAppendingPathComponent:@"AppStandard"];
     [[NSFileManager defaultManager] createDirectoryAtPath:appStandardDir withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%d",nNum]];
+    NSString *appDefaultFileName = [appStandardDir stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%ld",nNum]];
     
     // 字典对象
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
     // 将数据写入字典
     [dict setObject:[NSString stringWithFormat:@"%d",[subWin getSubWinVisible] ? 1 : 0] forKey:kSUBWINSHOWOUT];
-    [dict setObject:[NSString stringWithFormat:@"%d",subWin.winSourceType] forKey:kSUBWINSIGNALTYPE];
-    [dict setObject:[NSString stringWithFormat:@"%d",subWin.winChannelNum] forKey:kSUBWINCHANNELNUM];
+    [dict setObject:[NSString stringWithFormat:@"%ld",subWin.winSourceType] forKey:kSUBWINSIGNALTYPE];
+    [dict setObject:[NSString stringWithFormat:@"%ld",subWin.winChannelNum] forKey:kSUBWINCHANNELNUM];
     [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.origin.x] forKey:kSUBWINPARENTSTARTX];
     [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.origin.y] forKey:KSUBWINPARENTSTARTY];
     [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.size.width] forKey:kSUBWINPARENTWIDTH];
@@ -610,23 +632,23 @@
 }
 
 // 保存叠加窗口情景模式数据
-- (void)saveSubWinModelDataSource:(id)sender AtIndex:(int)nIndex
+- (void)saveSubWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex
 {
     skySubWin *subWin = (skySubWin *)sender;
-    int nWinNum = subWin.winNumber;
+    NSInteger nWinNum = subWin.winNumber;
     
     // 创建模式文件夹
-    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%d",nIndex];
+    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%ld",nIndex];
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *modelDirPath = [appDefaultsPath stringByAppendingPathComponent:modelPath];
     [[NSFileManager defaultManager] createDirectoryAtPath:modelDirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%d",nWinNum]];
+    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%ld",nWinNum]];
 
     // 数据保存
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:[NSString stringWithFormat:@"%d",[subWin getSubWinVisible] ? 1 : 0] forKey:kSUBWINSHOWOUT];
-    [dict setObject:[NSString stringWithFormat:@"%d",subWin.winSourceType] forKey:kSUBWINSIGNALTYPE];
-    [dict setObject:[NSString stringWithFormat:@"%d",subWin.winChannelNum] forKey:kSUBWINCHANNELNUM];
+    [dict setObject:[NSString stringWithFormat:@"%ld",subWin.winSourceType] forKey:kSUBWINSIGNALTYPE];
+    [dict setObject:[NSString stringWithFormat:@"%ld",subWin.winChannelNum] forKey:kSUBWINCHANNELNUM];
     [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.origin.x] forKey:kSUBWINPARENTSTARTX];
     [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.origin.y] forKey:KSUBWINPARENTSTARTY];
     [dict setObject:[NSString stringWithFormat:@"%f",subWin.limitRect.size.width] forKey:kSUBWINPARENTWIDTH];
@@ -641,17 +663,17 @@
 }
 
 // 反序列化窗口情景模式
-- (void)loadSubWinModelDataSource:(id)sender AtIndex:(int)nIndex
+- (void)loadSubWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex
 {
     skySubWin *subWin = (skySubWin *)sender;
-    int nWinNum = subWin.winNumber;
+    NSInteger nWinNum = subWin.winNumber;
     
     // 创建模式文件夹
-    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%d",nIndex];
+    NSString *modelPath = [NSString stringWithFormat:@"ModelDir_%ld",nIndex];
     NSString *appDefaultsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *modelDirPath = [appDefaultsPath stringByAppendingPathComponent:modelPath];
     [[NSFileManager defaultManager] createDirectoryAtPath:modelDirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%d",nWinNum]];
+    NSString *savePath = [modelDirPath stringByAppendingPathComponent:[NSString stringWithFormat:@"skySubWin_%ld",nWinNum]];
     // 保存字典
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:savePath];
 
@@ -681,13 +703,13 @@
 
 #pragma mark - skyModelView DataSource
 // 获取运行截图
-- (UIImage *)getModelImageAtIndex:(int)nIndex
+- (UIImage *)getModelImageAtIndex:(NSInteger)nIndex
 {
     return [_modelSavedImages objectAtIndex:nIndex];
 }
 
 // 获取保存日期
-- (NSString *)getModelSaveDateAtIndex:(int)nIndex
+- (NSString *)getModelSaveDateAtIndex:(NSInteger)nIndex
 {
     return @"";
 }
@@ -704,36 +726,50 @@
 }
 
 // 确认情景模式是否可用
-- (BOOL)isModelCanBeUsedAtIndex:(int)nIndex
+- (BOOL)isModelCanBeUsedAtIndex:(NSInteger)nIndex
 {
-    NSString *modelKey = [NSString stringWithFormat:@"Model-%d",nIndex+1];
+    NSString *modelKey = [NSString stringWithFormat:@"Model-%ld",nIndex+1];
     
-    int nValue = [[_modelSavedDic objectForKey:modelKey] integerValue];
+    NSInteger nValue = [[_modelSavedDic objectForKey:modelKey] integerValue];
     
     return (nValue == 1) ? YES : NO;
 }
 
+// 20140917 by wh 增加IP Port数据源接口
+#pragma mark - skySettingConnection DataSource
+// 获取当前IP地址
+- (NSString *)getCurrentIPAddress
+{
+    return _appIPAddress;
+}
+
+// 获取当前端口号
+- (NSInteger)getCurrentPortNumber
+{
+    return _appPortNumber;
+}
+
 #pragma mark - skySettingController DataSource
 // 获取当前屏幕行数
-- (int)getCurrentScreenRows
+- (NSInteger)getCurrentScreenRows
 {
     return _appRows;
 }
 
 // 获取当前屏幕列数
-- (int)getCurrentScreenColumns
+- (NSInteger)getCurrentScreenColumns
 {
     return _appColumns;
 }
 
 // 获取当前屏幕分辨率
-- (int)getCurrentScreenResolution
+- (NSInteger)getCurrentScreenResolution
 {
     return _appResolution;
 }
 
 // 获取当前控制器类型
-- (int)getCurrentControllerType
+- (NSInteger)getCurrentControllerType
 {
     return _appControllerType;
 }
@@ -764,31 +800,31 @@
 
 #pragma mark - skySettingSignal DataSource
 // 获取板卡数目
-- (int)getSignalCardNumbers
+- (NSInteger)getSignalCardNumbers
 {
     return _appCardNum;
 }
 
 // 设置输入板卡数目
-- (void)setSignalCardNumber:(int)nNum
+- (void)setSignalCardNumber:(NSInteger)nNum
 {
     _appCardNum = nNum;
 }
 
 // 获取板卡类型
-- (int)getCardTypeAtIndex:(int)nIndex
+- (NSInteger)getCardTypeAtIndex:(NSInteger)nIndex
 {
-    NSString *strKey = [NSString stringWithFormat:@"Card-%d",nIndex];
+    NSString *strKey = [NSString stringWithFormat:@"Card-%ld",nIndex];
     
     return [[_appSignalDic objectForKey:strKey] integerValue];
 }
 
 // 设置板卡类型
-- (void)setCardTypeAtIndex:(int)nIndex withValue:(int)nType
+- (void)setCardTypeAtIndex:(NSInteger)nIndex withValue:(NSInteger)nType
 {
-    NSString *strKey = [NSString stringWithFormat:@"Card-%d",nIndex];
+    NSString *strKey = [NSString stringWithFormat:@"Card-%ld",nIndex];
 
-    [_appSignalDic setObject:[NSString stringWithFormat:@"%d",nType] forKey:strKey];
+    [_appSignalDic setObject:[NSString stringWithFormat:@"%ld",nType] forKey:strKey];
 }
 
 // 重置信号数据
@@ -799,15 +835,28 @@
 
 #pragma mark - skyProtocolAdapter Delegate
 // 设置控制器协议类型
-- (void)adapterDelegateSetType:(int)nType
+- (void)adapterDelegateSetType:(NSInteger)nType
 {
     _appProtocolType = nType;
 }
 
 // 获取控制器协议类型
-- (int)adapterDelegateGetType
+- (NSInteger)adapterDelegateGetType
 {
     return _appProtocolType;
+}
+
+#pragma mark - skyTVSettingController DataSource
+// 获取命令控制器服务端IP地址
+- (NSString *)getCurrnetCmdIPAddress
+{
+    return _appCmdIPAddress;
+}
+
+// 获取命令控制器服务端端口号
+- (NSInteger)getCurrentCmdPortNumber
+{
+    return _appCmdPortNumber;
 }
 
 @end

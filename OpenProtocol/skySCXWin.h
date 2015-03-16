@@ -20,7 +20,7 @@
 // 开始进行缩放或者移动
 - (void)scxWinBeginEditing:(id)sender;
 // 全局数组数值更新 -- 父控制器中一个维持大画面状态值的数组
-- (void)updateBigPicStatusWithStart:(CGPoint)ptStart andSize:(CGSize)szArea withWinNum:(int)nNum;
+- (void)updateBigPicStatusWithStart:(CGPoint)ptStart andSize:(CGSize)szArea withWinNum:(NSInteger)nNum;
 // 判断窗口是否遇到大画面
 - (BOOL)isSCXWinCanReachBigPicture:(CGRect)rectFrame;
 // 窗口拼接
@@ -36,11 +36,11 @@
 // 添加叠加子窗口
 - (void)scxWinAddSubWindow:(id)sender;
 // 信号切换
-- (void)scxWin:(id)sender Signal:(int)nType SwitchTo:(int)nChannel;
+- (void)scxWin:(id)sender Signal:(NSInteger)nType SwitchTo:(NSInteger)nChannel;
 // 获取数据代理
 - (id<skySignalViewDataSource>)scxWinSignalDataSource;
 // 获取窗口输出分辨率
-- (int)scxWinGetResolution;
+- (NSInteger)scxWinGetResolution;
 
 @end
 
@@ -52,9 +52,9 @@
 // 数据序列化到文件
 - (void)saveSCXWinDataSource:(id)sender;
 // 窗口的情景数据序列化到文件
-- (void)saveSCXWinModelDataSource:(id)sender AtIndex:(int)nIndex;
+- (void)saveSCXWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex;
 // 反序列化窗口情景模式
-- (void)loadSCXWinModelDataSource:(id)sender AtIndex:(int)nIndex;
+- (void)loadSCXWinModelDataSource:(id)sender AtIndex:(NSInteger)nIndex;
 
 @end
 
@@ -62,27 +62,27 @@
 @interface skySCXWin : UIView <UIGestureRecognizerDelegate,skySCXWinPopoverDelegate,skySignalViewDelegate>
 {
     // 状态开关
-    BOOL    bRemovable;                                                 // 可移动
-    BOOL    bScalable;                                                  // 可缩放
-    BOOL    bBigPicture;                                                // 是否大画面
-    BOOL    bOverlying;                                                 // 是否叠加开窗
+    BOOL          bRemovable;                                           // 可移动
+    BOOL          bScalable;                                            // 可缩放
+    BOOL          bBigPicture;                                          // 是否大画面
+    BOOL          bOverlying;                                           // 是否叠加开窗
     // 窗口属性
-    int     nWinNumber;                                                 // 窗口编号
-    int     nSignalType;                                                // 信号类型 0-HDMI 1-DVI 2-VGA 3-CVBS 4-SDI
-    int     nChannelNum;                                                // 信号通道号
-    int     nBasicWinWidth;                                             // 单元窗口宽度
-    int     nBasicWinHeight;                                            // 单元窗口高度
-    int     nCurrentWinWidth;                                           // 当前窗口宽度
-    int     nCurrentWinHeight;                                          // 当前窗口高度
+    NSInteger     nWinNumber;                                           // 窗口编号
+    NSInteger     nSignalType;                                          // 信号类型 0-HDMI 1-DVI 2-VGA 3-CVBS 4-SDI
+    NSInteger     nChannelNum;                                          // 信号通道号
+    NSInteger     nBasicWinWidth;                                       // 单元窗口宽度
+    NSInteger     nBasicWinHeight;                                      // 单元窗口高度
+    NSInteger     nCurrentWinWidth;                                     // 当前窗口宽度
+    NSInteger     nCurrentWinHeight;                                    // 当前窗口高度
     // 窗口范围
     CGRect  windowRect;                                                 // 窗口范围
 }
 
 ////////////////// Property //////////////////////
 // 窗口属性
-@property (nonatomic, assign) int winNumber;                            // 窗口编号
-@property (nonatomic, assign) int winSourceType;                        // 信号类型
-@property (nonatomic, assign) int winChannelNum;                        // 信号通道
+@property (nonatomic, assign) NSInteger winNumber;                      // 窗口编号
+@property (nonatomic, assign) NSInteger winSourceType;                  // 信号类型
+@property (nonatomic, assign) NSInteger winChannelNum;                  // 信号通道
 @property (nonatomic, assign) CGPoint startPoint;                       // 窗口起始点
 @property (nonatomic, assign) CGSize winSize;                           // 窗口纵横跨屏大小
 @property (nonatomic, assign) CGPoint startCanvas;                      // 画布起始点
@@ -105,15 +105,15 @@
 
 ////////////////// Methods ///////////////////////
 // 窗口初始
-- (id)initWithFrame:(CGRect)frame withRow:(int)nRow andColumn:(int)nColumn;
+- (id)initWithFrame:(CGRect)frame withRow:(NSInteger)nRow andColumn:(NSInteger)nColumn;
 // 窗口数据初始化
-- (void)initializeSCXWin:(int)nwinNum;
+- (void)initializeSCXWin:(NSInteger)nwinNum;
 // 窗口UI更新
 - (void)updateWindowUI;
 // 切换矩阵
-- (void)switchSignal:(int)nType toChannel:(int)nChannel;
+- (void)switchSignal:(NSInteger)nType toChannel:(NSInteger)nChannel;
 // 窗口大小改变
-- (void)splitWinStartX:(int)startx StartY:(int)starty HCount:(int)nHcount VCount:(int)nVCount;
+- (void)splitWinStartX:(NSInteger)startx StartY:(NSInteger)starty HCount:(NSInteger)nHcount VCount:(NSInteger)nVCount;
 // CVBS新建
 - (void)newWithCVBS;
 // HDMI新建
@@ -135,9 +135,9 @@
 // 窗口普通状态
 - (void)setSCXWinToNormalStatus;
 // 保存当前窗口的情景模式
-- (void)saveSCXWinModelStatusAtIndex:(int)nIndex;
+- (void)saveSCXWinModelStatusAtIndex:(NSInteger)nIndex;
 // 加载窗口情景模式
-- (void)loadSCXWinModelStatusAtIndex:(int)nIndex;
+- (void)loadSCXWinModelStatusAtIndex:(NSInteger)nIndex;
 
 //////////////////////////////////////////////////
 // 属性函数
@@ -150,14 +150,14 @@
 - (void)setSCXWinOpen:(BOOL)bOpen;                                      // ..
 - (BOOL)getSCXWinOpen;                                                  // ..
 // 窗口规格
-- (void)setSCXWinBasicWinWidth:(int)nBasicWidth;    
-- (int)getSCXWinBasicWinWidth;
-- (void)setSCXWinBasicWinHeight:(int)nBasicHeight;
-- (int)getSCXWinBasicWinHeight;
-- (void)setSCXWinCurrentWinWidth:(int)nCurrentWidth;
-- (int)getSCXWinCurrentWinWidth;
-- (void)setSCXWinCurrentWinHeight:(int)nCurrentHeight;
-- (int)getSCXWinCurrentWinHeight;
+- (void)setSCXWinBasicWinWidth:(NSInteger)nBasicWidth;
+- (NSInteger)getSCXWinBasicWinWidth;
+- (void)setSCXWinBasicWinHeight:(NSInteger)nBasicHeight;
+- (NSInteger)getSCXWinBasicWinHeight;
+- (void)setSCXWinCurrentWinWidth:(NSInteger)nCurrentWidth;
+- (NSInteger)getSCXWinCurrentWinWidth;
+- (void)setSCXWinCurrentWinHeight:(NSInteger)nCurrentHeight;
+- (NSInteger)getSCXWinCurrentWinHeight;
 
 ////////////////// Ends //////////////////////////
 

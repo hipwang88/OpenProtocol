@@ -10,8 +10,8 @@
 
 @interface skyUnderPaint()
 {
-    int nTotalUnits;                // 单元总数
-    CGPoint start;                  // 起始点
+    NSInteger nTotalUnits;                // 单元总数
+    CGPoint start;                        // 起始点
 }
 
 // 绘制背景Logo
@@ -137,7 +137,7 @@
 {
     UIGraphicsPushContext(context);
     
-    int posX,posY,offsetX,offsetY;
+    long posX,posY,offsetX,offsetY;
     
     offsetX = start.x+8;
     offsetY = start.y+8;

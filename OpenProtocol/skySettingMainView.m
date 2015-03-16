@@ -21,12 +21,19 @@
 #pragma mark - 
 #pragma mark Basic Methods
 
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        self.title = @"控制器设置";
+        _controllers = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.title = @"控制器设置";
-    _controllers = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
@@ -107,7 +114,7 @@
 {
     NSString *result = nil;
     
-    result = @"通讯、控制器规格、信号源管理、控制协议选择";
+    result = @"通讯、控制器规格、信号源管理、控制协议选择、机芯单元开关屏控制";
     
     return result;
 }

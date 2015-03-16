@@ -20,14 +20,15 @@
 
 @synthesize serverIP = _serverIP;
 @synthesize serverPort = _serverPort;
+@synthesize connectionSwitcher = _connectionSwitcher;
 @synthesize setDelegate = _setDelegate;
+@synthesize setDataSource = _setDataSource;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // 组件初始化
-        [self initializeComponents];
+        
     }
     return self;
 }
@@ -36,6 +37,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    // 组件初始化
+    [self initializeComponents];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,12 +85,14 @@
         {
             case 0:
                 cell.textLabel.text = @"服务器IP";
+                _serverIP.text = [_setDataSource getCurrentIPAddress];
                 cell.accessoryView = self.serverIP;
                 _serverIP.textColor = [UIColor blueColor];
                 break;
             
             case 1:
                 cell.textLabel.text = @"服务器端口";
+                _serverPort.text = [[NSString alloc] initWithFormat:@"%ld",[_setDataSource getCurrentPortNumber]];
                 cell.accessoryView = self.serverPort;
                 _serverPort.textColor = [UIColor blueColor];
                 break;
@@ -120,10 +125,20 @@
     
     if (section == 0)
     {
-        result = @"输入控制器IP地址、端口号与命令延时";
+        // 20140917 by wh
+        result = @"输入控制器IP地址、端口号";
     }
     
     return result;
+}
+
+// 20140918 by wh
+#pragma mark - UITextFiled Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [_serverIP resignFirstResponder];
+    [_serverPort resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Class Methods
@@ -134,19 +149,21 @@
     // IP Address
     _serverIP = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 160, 30)];
     _serverIP.placeholder = @"172.16.16.119";
-    _serverIP.text = @"172.16.16.7";
+    _serverIP.text = [_setDataSource getCurrentIPAddress];
     //_serverIP.textAlignment = UITextAlignmentCenter;
     _serverIP.textAlignment = NSTextAlignmentLeft;
     _serverIP.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _serverIP.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    _serverIP.delegate = self;
     // Server Port
     _serverPort = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 160, 30)];
     _serverPort.placeholder = @"5000";
-    _serverPort.text = @"5000";
+    _serverPort.text = [NSString stringWithFormat:@"%ld",[_setDataSource getCurrentPortNumber]];
     //_serverPort.textAlignment = UITextAlignmentCenter;
     _serverIP.textAlignment = NSTextAlignmentLeft;
     _serverPort.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _serverPort.keyboardType = UIKeyboardTypeNumberPad;
+    _serverPort.delegate = self;
     // Connection Switcher
     _connectionSwitcher = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 160, 30)];
     _connectionSwitcher.on = NO;
@@ -172,6 +189,8 @@
         NSString *ipAddress = _serverIP.text;
         int nPort = [_serverPort.text intValue];
         
+        // 20140917 by wh 设置控制器IP和端口
+        [_setDelegate setCurrentIPAddress:ipAddress Port:nPort];
         // 代理调用
         [_setDelegate connectToController:ipAddress Port:nPort];
     }

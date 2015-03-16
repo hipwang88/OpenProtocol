@@ -15,10 +15,10 @@
 @interface skyViewController ()
 {
     CGPoint startCanvas;            // 视图有效区起始位置
-    int     nWinWidth;
-    int     nWinHeight;
-    int     nRows;
-    int     nColumn;
+    NSInteger     nWinWidth;
+    NSInteger     nWinHeight;
+    NSInteger     nRows;
+    NSInteger     nColumn;
     NSMutableArray *pArrayChess;    // 大画面棋盘数据
 }
 
@@ -54,11 +54,11 @@
 // 导航栏扩展按钮事件
 - (void)externButtonHandle:(id)paramSender;
 // 获取窗口左上角所在的索引
-- (int)getUnitIndexFromPointLU:(CGPoint)ptLU;
+- (NSInteger)getUnitIndexFromPointLU:(CGPoint)ptLU;
 // 获取窗口右下角所在的索引
-- (int)getUnitIndexFromPointRB:(CGPoint)ptRB;
+- (NSInteger)getUnitIndexFromPointRB:(CGPoint)ptRB;
 // 情景模式配置文件保存
-- (void)saveModelToFileAtIndex:(int)nIndex;
+- (void)saveModelToFileAtIndex:(NSInteger)nIndex;
 // 重新布置界面
 - (void)reloadUI;
 
@@ -84,6 +84,7 @@
 @synthesize scxWinContainer = _scxWinContainer;
 @synthesize subWinContainer = _subWinContainer;
 @synthesize protocolAdapter = _protocolAdapter;
+@synthesize tvProtocol = _tvProtocol;               // 20140917 by wh
 
 #pragma mark - Basic Methods
 
@@ -141,17 +142,18 @@
 - (void)initializeNavigationItem
 {
     // 导航栏左侧两个按钮加入
-    self.settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UITabBarSystemItemContacts target:self action:@selector(settingButtonHandle:)];
-    
+    self.settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:/*UITabBarSystemItemContacts*/UIBarButtonItemStyleBordered target:self action:@selector(settingButtonHandle:)];
     [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:self.settingButton, nil]];
+    
     // 导航栏右侧两个按钮加入
-    self.modelButton = [[UIBarButtonItem alloc] initWithTitle:@"情景模式" style:UITabBarSystemItemContacts target:self action:@selector(modelButtonHandle:)];
+    self.modelButton = [[UIBarButtonItem alloc] initWithTitle:@"情景模式" style:/*UITabBarSystemItemContacts*/UIBarButtonItemStyleBordered target:self action:@selector(modelButtonHandle:)];
     self.externButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbarDrawMode.png"] style:UIBarButtonItemStylePlain target:self action:@selector(externButtonHandle:)];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:self.externButton,self.modelButton, nil]];
     
     // 标题设置
     //self.title = @"创维群欣混合高清智能拼接控制系统";
-    self.title = @"创维基于IOS系统大屏幕拼接显示主机控制软件";
+    //self.title = @"创维基于IOS系统大屏幕拼接显示主机控制软件";
+    self.title = @"创维群欣数字智能拼接控制系统";                 // 20140915 by wh 修改程序标题名称
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0f/255.0f green:143.0f/255.0f blue:88.0f/255.0f alpha:1];
 }
 
@@ -161,6 +163,7 @@
     // 控制器设置弹出式菜单
     self.settingMainView = [[skySettingMainView alloc] initWithStyle:UITableViewStyleGrouped];
     self.settingNav = [[UINavigationController alloc] initWithRootViewController:self.settingMainView];
+    self.settingNav.interactivePopGestureRecognizer.enabled = NO;
     self.mySettingsPopover = [[UIPopoverController alloc] initWithContentViewController:self.settingNav];
     self.mySettingsPopover.popoverContentSize = CGSizeMake(320.0f, 700.0f);
     // add skySettingConnection
@@ -168,6 +171,7 @@
     myConnection.title = @"通讯连接设置";
     myConnection.rowImage = [UIImage imageNamed:@"ConnSet.png"];
     myConnection.setDelegate = self;
+    myConnection.setDataSource = _appDelegate.theApp;
     [_settingMainView.controllers addObject:myConnection];
     // add skySettingController
     skySettingController *myController = [[skySettingController alloc] initWithNibName:@"skySettingController" bundle:nil];
@@ -188,6 +192,13 @@
     mySDKs.rowImage = [UIImage imageNamed:@"ProtocalSet.png"];
     mySDKs.sdkDelegate = self;
     [_settingMainView.controllers addObject:mySDKs];
+    // add skyTVSettings 20140917 by wh
+    skyTVSettingController *myTVController = [[skyTVSettingController alloc] initWithNibName:@"skyTVSettingController" bundle:nil];
+    myTVController.title = @"屏幕开关机控制";
+    myTVController.rowImage = [UIImage imageNamed:@"monitor.png"];
+    myTVController.tvDelegate = self;
+    myTVController.tvDataSource = _appDelegate.theApp;
+    [_settingMainView.controllers addObject:myTVController];
     
     // 情景模式弹出式菜单
     self.modelMainView = [[skyModelView alloc] initWithStyle:UITableViewStylePlain];
@@ -217,7 +228,7 @@
     _scxWinContainer = [[NSMutableArray alloc] init];
     CGRect scxWinRect;
     CGRect limitRect = CGRectMake(startCanvas.x, startCanvas.y, nColumn*nWinWidth, nRows*nWinHeight);
-    int count = nRows * nColumn;
+    NSInteger count = nRows * nColumn;
     for (int i = 0; i < count; i++)
     {
         // 计算大小位置
@@ -229,8 +240,8 @@
         skySCXWin *scxWin = [[skySCXWin alloc] initWithFrame:scxWinRect withRow:nRows andColumn:nColumn];
         scxWin.delegate = self;
         scxWin.dataSource = _appDelegate.theApp;
-        scxWin.startCanvas = startCanvas;
-        scxWin.limitRect = limitRect;
+        scxWin.startCanvas = startCanvas;           // 窗口活动区域起始点
+        scxWin.limitRect = limitRect;               // 窗口活动区域矩形
         // 窗口值初始
         [scxWin initializeSCXWin:i+1];
         [scxWin hideBoarderView];
@@ -281,7 +292,7 @@
 // 初始化程序状态
 - (void)initializeStatus
 {
-    uint total;
+    NSInteger total;
     self.externVisible = NO;
     nWinWidth = _appDelegate.theApp.appUnitWidth * 2;
     nWinHeight = _appDelegate.theApp.appUnitHeight * 2;
@@ -297,9 +308,12 @@
 // 初始化协议适配器
 - (void)initializeProtocolAdapter
 {
+    // 控制器协议适配器初始
     _protocolAdapter = [[skyProtocolAdapter alloc] init];
     _protocolAdapter.delegate = _appDelegate.theApp;
     [_protocolAdapter initialAdapter];
+    // 20140918 by wh 机芯协议适配器初始
+    _tvProtocol = [[skyTVProtocol alloc] initTVProtocol];
 }
 
 // 导航栏设置按钮事件
@@ -344,7 +358,7 @@
     if (!self.externVisible)
     {
         self.topExternViewController = _externWin;
-        [self.externButton setStyle:UIBarButtonItemStylePlain];                              // 设置按下状态
+        [self.externButton setStyle:UIBarButtonItemStylePlain];                             // 设置按下状态
         [self.externButton setImage:[UIImage imageNamed:@"toolbarDrawModeHide.png"]];       // 设置背景图片
         self.externVisible = YES;
     }
@@ -358,9 +372,9 @@
 }
 
 // 获取窗口左上角所在的索引
-- (int)getUnitIndexFromPointLU:(CGPoint)ptLU
+- (NSInteger)getUnitIndexFromPointLU:(CGPoint)ptLU
 {
-    int x,y,nIndex;
+    NSInteger x,y,nIndex;
     
     x = (ptLU.x - startCanvas.x) / nWinWidth;
     y = (ptLU.y - startCanvas.y) / nWinHeight;
@@ -371,9 +385,9 @@
 }
 
 // 获取窗口右下角所在的索引
-- (int)getUnitIndexFromPointRB:(CGPoint)ptRB
+- (NSInteger)getUnitIndexFromPointRB:(CGPoint)ptRB
 {
-    int x,y,m,nIndex;
+    NSInteger x,y,m,nIndex;
     
     m = (ptRB.x - startCanvas.x) / nWinWidth;
     x = (int)(ptRB.x - startCanvas.x) % nWinWidth ? m : m - 1;
@@ -386,7 +400,7 @@
 }
 
 // 情景模式配置文件保存
-- (void)saveModelToFileAtIndex:(int)nIndex
+- (void)saveModelToFileAtIndex:(NSInteger)nIndex
 {
     // 保存窗口配置数据
     for (skySCXWin *scxWin in _scxWinContainer)
@@ -406,7 +420,7 @@
     /****************** 初始状态重置 ********************/
     [_appDelegate.theApp calculateScreenSize];
     
-    uint total;
+    NSInteger total;
     self.externVisible = NO;
     nWinWidth = _appDelegate.theApp.appUnitWidth * 2;
     nWinHeight = _appDelegate.theApp.appUnitHeight * 2;
@@ -437,16 +451,16 @@
     
     /****************** 配置底图 ************************/
     self.underPaint = [[skyUnderPaint alloc] initWithFrame:self.view.frame];
-    self.underPaint.delegate = self;            // 指定代理
+    self.underPaint.delegate = self;                // 指定代理
     [self.view addSubview:self.underPaint];
     [self.underPaint getUnderSpecification];
-    startCanvas = [_underPaint getStartPoint];  // 获取起始点位置
+    startCanvas = [_underPaint getStartPoint];      // 获取起始点位置
 
     /****************** 配置普通窗口 *********************/
     // 漫游窗口
     CGRect scxWinRect;
     CGRect limitRect = CGRectMake(startCanvas.x, startCanvas.y, nColumn*nWinWidth, nRows*nWinHeight);
-    int count = nRows * nColumn;
+    NSInteger count = nRows * nColumn;
     for (int i = 0; i < count; i++)
     {
         // 计算大小位置
@@ -641,9 +655,9 @@
 }
 
 // 更新大画面状态数组
-- (void)updateBigPicStatusWithStart:(CGPoint)ptStart andSize:(CGSize)szArea withWinNum:(int)nNum
+- (void)updateBigPicStatusWithStart:(CGPoint)ptStart andSize:(CGSize)szArea withWinNum:(NSInteger)nNum
 {
-    int nIndex,nStart;
+    NSInteger nIndex,nStart;
     
     for (int i = 0; i < szArea.height; i++)
     {
@@ -651,7 +665,7 @@
         for (int j = 0; j < szArea.width; j++)
         {
             nIndex = nStart + j;
-            [pArrayChess replaceObjectAtIndex:nIndex withObject:[NSNumber numberWithInt:nNum]];
+            [pArrayChess replaceObjectAtIndex:nIndex withObject:[NSNumber numberWithLong:nNum]];
         }
     }
 }
@@ -665,16 +679,16 @@
     CGPoint ptTopLeft = rectFrame.origin;
     CGPoint ptBottomRight = CGPointMake(ptTopLeft.x+rectFrame.size.width, ptTopLeft.y+rectFrame.size.height);
     
-    int nIndexLU = [self getUnitIndexFromPointLU:ptTopLeft];
-    int nIndexRB = [self getUnitIndexFromPointRB:ptBottomRight];
+    NSInteger nIndexLU = [self getUnitIndexFromPointLU:ptTopLeft];
+    NSInteger nIndexRB = [self getUnitIndexFromPointRB:ptBottomRight];
     
     ptLU.x = nIndexLU % nColumn;
     ptLU.y = nIndexLU / nColumn;
     ptRB.x = nIndexRB % nColumn;
     ptRB.y = nIndexRB / nColumn;
         
-    int nStart = nIndexLU;
-    uint nIndex = 0;
+    NSInteger nStart = nIndexLU;
+    NSInteger nIndex = 0;
     int nWinIndex = 0;
     
     for (int i = 0; i <= ptRB.y - ptLU.y; i++)
@@ -855,7 +869,7 @@
 }
 
 // 信号切换
-- (void)scxWin:(id)sender Signal:(int)nType SwitchTo:(int)nChannel
+- (void)scxWin:(id)sender Signal:(NSInteger)nType SwitchTo:(NSInteger)nChannel
 {
     skySCXWin *scxWin = (skySCXWin *)sender;
     
@@ -873,7 +887,7 @@
 }
 
 // 获取窗口输出分辨率
-- (int)scxWinGetResolution
+- (NSInteger)scxWinGetResolution
 {
     return _appDelegate.theApp.appResolution;
 }
@@ -936,7 +950,7 @@
 }
 
 // 信号切换
-- (void)subWin:(id)sender Signal:(int)nType SwitchTo:(int)nChannel
+- (void)subWin:(id)sender Signal:(NSInteger)nType SwitchTo:(NSInteger)nChannel
 {
     skySubWin *subWin = (skySubWin *)sender;
     
@@ -969,7 +983,7 @@
     // 添加模式内普通窗口
     CGRect scxWinRect;
     CGRect limitRect = CGRectMake(startCanvas.x, startCanvas.y, nColumn*nWinWidth, nRows*nWinHeight);
-    int count = nRows * nColumn;
+    NSInteger count = nRows * nColumn;
     for (int i = 0; i < count; i++)
     {
         // 计算大小位置
@@ -1075,7 +1089,7 @@
 
 #pragma mark - skySettingConnection Delegate
 // 连接通讯
-- (void)connectToController:(NSString *)ipAddress Port:(int)nPort
+- (void)connectToController:(NSString *)ipAddress Port:(NSInteger)nPort
 {
     if (![_protocolAdapter adapterConnectToController:ipAddress Port:nPort])
     {
@@ -1089,9 +1103,16 @@
     [_protocolAdapter adapterDisconnection];
 }
 
+// 20140917 by wh 设置当前控制器IP地址和端口号
+- (void)setCurrentIPAddress:(NSString *)ipAddress Port:(NSInteger)nPort
+{
+    [_appDelegate.theApp setAppIPAddress:ipAddress];
+    [_appDelegate.theApp setAppPortNumber:nPort];
+}
+
 #pragma mark - skySettingController Delegate
 // 设置当前控制器数据
-- (void)setCurrentRow:(int)r Column:(int)c Resolution:(int)re
+- (void)setCurrentRow:(NSInteger)r Column:(NSInteger)c Resolution:(NSInteger)re
 {
     // 数据设置
     [_appDelegate.theApp setAppRows:r];
@@ -1109,7 +1130,7 @@
 }
 
 // 设置当前控制器类型
-- (void)setCurrentControllerType:(int)nValue
+- (void)setCurrentControllerType:(NSInteger)nValue
 {
     [_appDelegate.theApp setAppControllerType:nValue];
 }
@@ -1156,15 +1177,68 @@
 
 #pragma mark - skySettingSDKs Delegate
 // 获取协议类型
-- (int)getProtocolType
+- (NSInteger)getProtocolType
 {
     return _appDelegate.theApp.appProtocolType;
 }
 
 // 设置协议类型
-- (void)setProtocolType:(int)nType
+- (void)setProtocolType:(NSInteger)nType
 {
     [_protocolAdapter setAdapterType:nType];
+}
+
+#pragma mark - skyTVSettingController Delegate
+// 连接通讯
+- (void)connectToCmd:(NSString *)ipAddress Port:(NSInteger)nPort
+{
+    if (![_tvProtocol connectTCPService:ipAddress andPort:nPort])
+    {
+        [(skyTVSettingController *)[_settingMainView.controllers objectAtIndex:4] controllerCanBeConnected:NO];
+    }
+}
+
+// 端口通讯
+- (void)disConnectCmd
+{
+    [_tvProtocol disconnectWithTCPService];
+}
+
+// 20140917 by wh 设置当前控制器IP地址和端口号
+- (void)setCurrentCmdIPAddress:(NSString *)ipAddress Port:(NSInteger)nPort
+{
+    [_appDelegate.theApp setAppCmdIPAddress:ipAddress];
+    [_appDelegate.theApp setAppCmdPortNumber:nPort];
+}
+
+// 屏幕全选
+- (void)skyTVSettingSelectAllScreen
+{
+    [_tvProtocol skyTVSelectAll];
+}
+
+// 屏幕全不选
+- (void)skyTVSettingUnSelectAllScreen
+{
+    [_tvProtocol skyTVUnSelectAll];
+}
+
+// 屏幕开启
+- (void)skyTVSettingScreenOn
+{
+    // 界面配置
+    [_mySettingsPopover dismissPopoverAnimated:YES];
+    // 协议发送
+    [_tvProtocol skyTVOpenTV];
+}
+
+// 屏幕关闭
+- (void)skyTVSettingScreenOff
+{
+    // 界面配置
+    [_mySettingsPopover dismissPopoverAnimated:YES];
+    // 协议发送
+    [_tvProtocol skyTVCloseTV];
 }
 
 @end
