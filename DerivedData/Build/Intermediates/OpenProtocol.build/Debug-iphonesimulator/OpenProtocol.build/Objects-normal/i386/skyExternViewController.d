@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/skyworth/Code-Everyday/OpenProtocol/OpenProtocol/skyExternViewController.m \
-  /Users/skyworth/Code-Everyday/OpenProtocol/OpenProtocol/skyExternViewController.h
+  /Users/skyworth/Code-Everyday/y-bing/OpenProtocol/OpenProtocol/skyExternViewController.m \
+  /Users/skyworth/Code-Everyday/y-bing/OpenProtocol/OpenProtocol/skyExternViewController.h

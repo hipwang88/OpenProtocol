@@ -64,7 +64,8 @@
 {
     [super viewDidLoad];
 
-    self.title = @"信号切换";
+    //self.title = @"信号切换";
+    self.title = NSLocalizedString(@"UnitMenu_SignalSwitch", nil);
 }
 
 - (void)didReceiveMemoryWarning

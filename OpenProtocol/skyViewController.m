@@ -142,18 +142,19 @@
 - (void)initializeNavigationItem
 {
     // 导航栏左侧两个按钮加入
-    self.settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:/*UITabBarSystemItemContacts*/UIBarButtonItemStyleBordered target:self action:@selector(settingButtonHandle:)];
+    self.settingButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Setting",nil) style:/*UITabBarSystemItemContacts*/UIBarButtonItemStyleBordered target:self action:@selector(settingButtonHandle:)];
     [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:self.settingButton, nil]];
     
     // 导航栏右侧两个按钮加入
-    self.modelButton = [[UIBarButtonItem alloc] initWithTitle:@"情景模式" style:/*UITabBarSystemItemContacts*/UIBarButtonItemStyleBordered target:self action:@selector(modelButtonHandle:)];
+    self.modelButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Model",nil) style:/*UITabBarSystemItemContacts*/UIBarButtonItemStyleBordered target:self action:@selector(modelButtonHandle:)];
     self.externButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"toolbarDrawMode.png"] style:UIBarButtonItemStylePlain target:self action:@selector(externButtonHandle:)];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:self.externButton,self.modelButton, nil]];
     
     // 标题设置
     //self.title = @"创维群欣混合高清智能拼接控制系统";
     //self.title = @"创维基于IOS系统大屏幕拼接显示主机控制软件";
-    self.title = @"创维群欣数字智能拼接控制系统";                 // 20140915 by wh 修改程序标题名称
+    //self.title = @"创维群欣数字智能拼接控制系统";                 // 20140915 by wh 修改程序标题名称
+    self.title = NSLocalizedString(@"SystemTitle", nil);
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0f/255.0f green:143.0f/255.0f blue:88.0f/255.0f alpha:1];
 }
 
@@ -168,33 +169,38 @@
     self.mySettingsPopover.popoverContentSize = CGSizeMake(320.0f, 700.0f);
     // add skySettingConnection
     skySettingConnection *myConnection = [[skySettingConnection alloc] initWithNibName:@"skySettingConnection" bundle:nil];
-    myConnection.title = @"通讯连接设置";
+    //myConnection.title = @"通讯连接设置";
+    myConnection.title = NSLocalizedString(@"Setting_Connect",nil);
     myConnection.rowImage = [UIImage imageNamed:@"ConnSet.png"];
     myConnection.setDelegate = self;
     myConnection.setDataSource = _appDelegate.theApp;
     [_settingMainView.controllers addObject:myConnection];
     // add skySettingController
     skySettingController *myController = [[skySettingController alloc] initWithNibName:@"skySettingController" bundle:nil];
-    myController.title = @"控制器规格";
+    //myController.title = @"控制器规格";
+    myController.title = NSLocalizedString(@"Setting_Spec",nil);
     myController.rowImage = [UIImage imageNamed:@"SCXSet.png"];
     myController.myDelegate = self;
     myController.myDataSource = _appDelegate.theApp;
     [_settingMainView.controllers addObject:myController];
     // add skySettingSignal
     skySettingSignal *mySignal = [[skySettingSignal alloc] initWithNibName:@"skySettingSignal" bundle:nil];
-    mySignal.title = @"信号源管理";
+    //mySignal.title = @"信号源管理";
+    mySignal.title = NSLocalizedString(@"Setting_Signal",nil);
     mySignal.rowImage = [UIImage imageNamed:@"SignalSet.png"];
     mySignal.myDataSource = _appDelegate.theApp;
     [_settingMainView.controllers addObject:mySignal];
     // add skySettingSDKs
     skySettingSDKs *mySDKs = [[skySettingSDKs alloc] initWithNibName:@"skySettingSDKs" bundle:nil];
-    mySDKs.title = @"控制器协议";
+    //mySDKs.title = @"控制器协议";
+    mySDKs.title = NSLocalizedString(@"Setting_Protocal",nil);
     mySDKs.rowImage = [UIImage imageNamed:@"ProtocalSet.png"];
     mySDKs.sdkDelegate = self;
     [_settingMainView.controllers addObject:mySDKs];
     // add skyTVSettings 20140917 by wh
     skyTVSettingController *myTVController = [[skyTVSettingController alloc] initWithNibName:@"skyTVSettingController" bundle:nil];
-    myTVController.title = @"屏幕开关机控制";
+    //myTVController.title = @"屏幕开关机控制";
+    myTVController.title = NSLocalizedString(@"Setting_Power",nil);
     myTVController.rowImage = [UIImage imageNamed:@"monitor.png"];
     myTVController.tvDelegate = self;
     myTVController.tvDataSource = _appDelegate.theApp;
@@ -863,7 +869,7 @@
     // 窗口都已经添加完毕
     if (nCount == 4)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"最多只能添加四个叠加子窗" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SystemInfo",nil) message:NSLocalizedString(@"SystemInfo_Sub",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SystemInfo_sure",nil) otherButtonTitles:nil, nil];
         [alert show];
     }
 }

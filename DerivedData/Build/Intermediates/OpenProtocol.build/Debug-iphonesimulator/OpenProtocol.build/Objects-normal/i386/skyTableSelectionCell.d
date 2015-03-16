@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/skyworth/Code-Everyday/OpenProtocol/OpenProtocol/skyTableSelectionCell.m \
-  /Users/skyworth/Code-Everyday/OpenProtocol/OpenProtocol/skyTableSelectionCell.h
+  /Users/skyworth/Code-Everyday/y-bing/OpenProtocol/OpenProtocol/skyTableSelectionCell.m \
+  /Users/skyworth/Code-Everyday/y-bing/OpenProtocol/OpenProtocol/skyTableSelectionCell.h

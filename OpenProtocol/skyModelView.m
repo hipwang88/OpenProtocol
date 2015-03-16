@@ -49,11 +49,12 @@
 {
     [super viewDidLoad];
 
-    self.title = @"情景模式";
+    //self.title = @"情景模式";
+    self.title = NSLocalizedString(@"Model", nil);
     _tableData = [[NSMutableArray alloc] init];
     for (int i = 1; i <= 18; i++)
     {
-        NSString *stringName = [NSString stringWithFormat:@"情景模式 - %d",i];
+        NSString *stringName = [NSString stringWithFormat:@"%@ - %d",NSLocalizedString(@"Model", nil),i];
         [_tableData addObject:stringName];
     }
     
@@ -138,7 +139,7 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前情景没有保存" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SystemInfo", nil) message:NSLocalizedString(@"SystemInfo_Model", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SystemInfo_sure", nil) otherButtonTitles:nil, nil];
         [alert show];
     }
     
@@ -156,8 +157,8 @@
         [cell becomeFirstResponder];
         _selectionIndex = [self.tableView indexPathForCell:cell];   // 获取选择的Cell
         
-        UIMenuItem *itemSave = [[UIMenuItem alloc] initWithTitle:@"保存情景" action:@selector(handleModelSaveEvent:)];
-        UIMenuItem *itemDelete = [[UIMenuItem alloc] initWithTitle:@"删除情景" action:@selector(handleModelDeleteEvent:)];
+        UIMenuItem *itemSave = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"ModelProfile_save", nil) action:@selector(handleModelSaveEvent:)];
+        UIMenuItem *itemDelete = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"ModelProfile_delete", nil) action:@selector(handleModelDeleteEvent:)];
         
         UIMenuController *menu = [UIMenuController sharedMenuController];
         [menu setMenuItems:[NSArray arrayWithObjects:itemSave,itemDelete, nil]];

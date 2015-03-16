@@ -1,0 +1,99 @@
+/* 
+  Localizable.strings
+  OpenProtocol
+
+  Created by skyworth on 15/3/16.
+  Copyright (c) 2015年 skyworth. All rights reserved.
+*/
+
+// 系统栏
+"SystemTitle" = "创维群欣数字智能拼接系统";
+"Setting" = "设置";
+"Model" = "情景模式";
+
+// 设置
+"Setting_Title" = "控制器设置";
+"Setting_Info_Title" = "控制器基本设置";
+"Setting_Info_Bottom" = "通讯、控制器规格、信号源管理、控制协议选择、机芯单元开关屏控制";
+"Setting_Connect" = "通讯连接设置";
+"Setting_Spec" = "控制器规格";
+"Setting_Signal" = "信号源管理";
+"Setting_Protocal" = "控制器协议";
+"Setting_Power" = "屏幕开关机控制";
+
+// 通讯设置
+"ConnectSet_Info_Title" = "通讯连接";
+"ConnectSet_Info_Bottom" = "输入控制器IP地址、端口号";
+"ConnectSet_IP" = "服务器IP";
+"ConnectSet_Port" = "服务器端口";
+"ConnectSet_Confirm" = "连接控制器";
+
+// 控制器规格
+"SpecSet_Info_RC" = "大屏幕拼接规格";
+"SpecSet_Info_Res" = "控制器类型与输出分辨率";
+"SpecSet_Info_Others" = "控制器常规参数设置";
+"SpecSet_Row" = "屏幕行数";
+"SpecSet_Column" = "屏幕列数";
+"SpecSet_Res" = "屏幕输出分辨率";
+"SpecSet_Type" = "控制器类型选择";
+"SpecSet_PowerSave" = "掉电记忆";
+"SpecSet_Temperature" = "智能温控";
+"SpecSet_Edgeblending" = "边缘融合";
+"SpecSet_Buzzer" = "蜂鸣器开关";
+"SpecSet_Confirm" = "确认控制器设置";
+
+// 信号管理
+"SignalSet_Info_CardNum" = "输入信号板卡数目选择";
+"SignalSet_Info_CardType" = "选择每张输入板卡的信号类型";
+"SignalSet_Num" = "板卡数目";
+
+// 协议选择
+"Protocal_Cell1" = "LCD_Controller12-V5 内部协议";
+"Protocal_Cell2" = "LCD_Controller12-V5 开放协议";
+
+// 屏幕开关机
+"PowerSet_Info_HUB" = "命令控制器网络设置";
+"PowerSet_Info_Con" = "输入命令控制器的IP地址和端口号进行连接";
+"PowerSet_Info_Options" = "屏幕开关机操作";
+"PowerSet_Info_HowTo" = "请点击进行操作";
+"PowerSet_HUBIp" = "控制器IP";
+"PowerSet_HUBPort" = "控制器端口";
+"PowerSet_Connection" = "连接控制器";
+"PowerSet_PowerOn" = "屏幕开机";
+"PowerSet_PowerOff" = "屏幕关机";
+
+// 窗口菜单
+"UnitMenu" = "窗口功能菜单";
+"UnitMenu_Info_Title" = "功能项选择";
+"UnitMenu_Info_Bottom1" = "全屏：让拼接墙全屏显示本窗口\n大画面分解：将大画面状态窗口分解成单画面\n信号切换：点击进入信号切换页面选择输入信号\n叠加开窗：实现窗口叠加功能，一个画面上叠加四个子窗口";
+"UnitMenu_Info_Bottom2" = "全屏：让拼接墙全屏显示本窗口\n大画面分解：将大画面状态窗口分解成单画面\n信号切换：点击进入信号切换页面选择输入信号\n退出叠加状态：还原窗口为普通状态\n添加子窗口：在画面上加入一个叠加子窗";
+"UnitMenu_Full" = "全屏";
+"UnitMenu_Resolve" = "大画面分解";
+"UnitMenu_SignalSwitch" = "信号切换";
+"UnitMenu_OpenWin" = "叠加开窗";
+"UnitMenu_ExitOpenwin" = "退出叠加状态";
+"UnitMenu_Add" = "添加子窗口";
+
+// 子窗口功能菜单
+"SubMenu" = "子窗口功能菜单";
+"SubMenu_Info_Title" = "功能项选择";
+"SubMenu_Info_Bottom" = "关闭子窗口：将当前子窗口关闭\n信号切换：点击进入信号切换页面选择输入信号";
+"SubMenu_SwitchSignal" = "信号切换";
+"SubMenu_Close" = "关闭子窗口";
+
+// 扩展视图
+"ExFunctionView" = "功能扩展视图，请根据需要点击右侧按钮！";
+"ExFunctionInfo_CVBS" = "模拟信号新建：所有窗口以模拟信号一对一输出";
+"ExFunctionInfo_HDMI" = "高清信号新建：所有窗口以高清数字信号一对一输出";
+
+// 情景模式
+"ModelProfile_save" = "保存情景";
+"ModelProfile_delete" = "删除情景";
+
+// 系统提示
+"SystemInfo" = "提示";
+"SystemInfo_FULL" = "窗口全屏功能在大画面状态与叠加开窗状态不能够使用";
+"SystemInfo_Resolve" = "大画面分解只能在窗口是大画面状态下使用";
+"SystemInfo_Model" = "当前情景没有保存";
+"SystemInfo_Sub" = "最多只能添加四个叠加子窗";
+"SystemInfo_sure" = "知道了";

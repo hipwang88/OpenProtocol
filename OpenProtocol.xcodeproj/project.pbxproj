@@ -112,6 +112,8 @@
 		06DBF3D218520D3000F1351E /* skyViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DBF3D018520D3000F1351E /* skyViewController_iPad.xib */; };
 		06DBF3D318520D3000F1351E /* skyViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06DBF3D118520D3000F1351E /* skyViewController_iPhone.xib */; };
 		06DBF3D51852148200F1351E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DBF3D41852148200F1351E /* CFNetwork.framework */; };
+		06EFE1B41AB68A9500B25355 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06EFE1B61AB68A9500B25355 /* Localizable.strings */; };
+		06EFE1B91AB68ABA00B25355 /* OpenProtocol-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06DBF2AB1852094800F1351E /* OpenProtocol-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,7 +137,7 @@
 		06DBF2A31852094800F1351E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06DBF2A51852094800F1351E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		06DBF2A71852094800F1351E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		06DBF2AB1852094800F1351E /* OpenProtocol-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenProtocol-Info.plist"; sourceTree = "<group>"; };
+		06DBF2AB1852094800F1351E /* OpenProtocol-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OpenProtocol-Info.plist"; sourceTree = "<group>"; };
 		06DBF2AD1852094800F1351E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06DBF2AF1852094800F1351E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06DBF2B11852094800F1351E /* OpenProtocol-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenProtocol-Prefix.pch"; sourceTree = "<group>"; };
@@ -267,6 +269,9 @@
 		06DBF3D018520D3000F1351E /* skyViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = skyViewController_iPad.xib; sourceTree = "<group>"; };
 		06DBF3D118520D3000F1351E /* skyViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = skyViewController_iPhone.xib; sourceTree = "<group>"; };
 		06DBF3D41852148200F1351E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		06EFE1B51AB68A9500B25355 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		06EFE1B71AB68ABA00B25355 /* zh_Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_Hans; path = zh_Hans.lproj/Localizable.strings; sourceTree = "<group>"; };
+		06EFE1B81AB68ABA00B25355 /* zh_Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_Hans; path = zh_Hans.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +359,7 @@
 				06DBF2AC1852094800F1351E /* InfoPlist.strings */,
 				06DBF2AF1852094800F1351E /* main.m */,
 				06DBF2B11852094800F1351E /* OpenProtocol-Prefix.pch */,
+				06EFE1B61AB68A9500B25355 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				zh_Hans,
 			);
 			mainGroup = 06DBF2971852094800F1351E;
 			productRefGroup = 06DBF2A11852094800F1351E /* Products */;
@@ -708,6 +715,7 @@
 				06DBF3B818520CFF00F1351E /* skyCell2.xib in Resources */,
 				06DBF31F18520B8D00F1351E /* CVBSDown.png in Resources */,
 				06DBF32418520B8D00F1351E /* scxWin_Btn_Select.png in Resources */,
+				06EFE1B91AB68ABA00B25355 /* OpenProtocol-Info.plist in Resources */,
 				06DBF32218520B8D00F1351E /* HDMINor.png in Resources */,
 				06DBF31C18520B8D00F1351E /* BigPic.png in Resources */,
 				06DBF30E18520B8D00F1351E /* VGACardNormal.png in Resources */,
@@ -725,6 +733,7 @@
 				06DBF3BC18520CFF00F1351E /* skyTableStepperCell.xib in Resources */,
 				06DBF31918520B8D00F1351E /* UpAccessory.png in Resources */,
 				06DBF32818520B8D00F1351E /* appIcon-Small@2x.png in Resources */,
+				06EFE1B41AB68A9500B25355 /* Localizable.strings in Resources */,
 				06DBF31318520B8D00F1351E /* signal_HDMI-Small.png in Resources */,
 				06DBF2B61852094800F1351E /* Images.xcassets in Resources */,
 				06DBF30C18520B8D00F1351E /* HDMICardNormal.png in Resources */,
@@ -834,6 +843,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				06DBF2AD1852094800F1351E /* en */,
+				06EFE1B81AB68ABA00B25355 /* zh_Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -844,6 +854,15 @@
 				06DBF2C61852094800F1351E /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		06EFE1B61AB68A9500B25355 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06EFE1B51AB68A9500B25355 /* en */,
+				06EFE1B71AB68ABA00B25355 /* zh_Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

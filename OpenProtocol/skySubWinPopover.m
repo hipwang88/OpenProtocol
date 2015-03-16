@@ -40,8 +40,9 @@
 {
     [super viewDidLoad];
     
-    self.title = @"子窗口功能菜单";
-    _tableData = [[NSMutableArray alloc] initWithObjects:@"关闭子窗口",@"信号切换", nil];
+    //self.title = @"子窗口功能菜单";
+    self.title = NSLocalizedString(@"SubMenu", nil);
+    _tableData = [[NSMutableArray alloc] initWithObjects:NSLocalizedString(@"SubMenu_Close", nil),NSLocalizedString(@"SubMenu_SwitchSignal", nil), nil];
     
     // 初始图像序列
     _imageArray = [[NSMutableArray alloc] init];
@@ -120,14 +121,16 @@
 // 表头描述
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"功能项选择";
+    //return @"功能项选择";
+    return NSLocalizedString(@"SubMenu_Info_Title", nil);
 }
 
 // 表尾描述
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    NSString *footerString = [NSString stringWithFormat:@"关闭子窗口：将当前子窗口关闭\n信号切换：点击进入信号切换页面选择输入信号"];
-    
+    //NSString *footerString = [NSString stringWithFormat:@"关闭子窗口：将当前子窗口关闭\n信号切换：点击进入信号切换页面选择输入信号"];
+    NSString *footerString = [NSString stringWithFormat:NSLocalizedString(@"SubMenu_Info_Bottom", nil)];
+
     return footerString;
 }
 

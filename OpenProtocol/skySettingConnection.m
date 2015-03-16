@@ -84,14 +84,16 @@
         switch (indexPath.row)
         {
             case 0:
-                cell.textLabel.text = @"服务器IP";
+                //cell.textLabel.text = @"服务器IP";
+                cell.textLabel.text = NSLocalizedString(@"ConnectSet_IP", nil);
                 _serverIP.text = [_setDataSource getCurrentIPAddress];
                 cell.accessoryView = self.serverIP;
                 _serverIP.textColor = [UIColor blueColor];
                 break;
             
             case 1:
-                cell.textLabel.text = @"服务器端口";
+                //cell.textLabel.text = @"服务器端口";
+                cell.textLabel.text = NSLocalizedString(@"ConnectSet_Port", nil);
                 _serverPort.text = [[NSString alloc] initWithFormat:@"%ld",[_setDataSource getCurrentPortNumber]];
                 cell.accessoryView = self.serverPort;
                 _serverPort.textColor = [UIColor blueColor];
@@ -100,7 +102,8 @@
     }
     else if (indexPath.section == 1)
     {
-        cell.textLabel.text = @"连接控制器";
+        //cell.textLabel.text = @"连接控制器";
+        cell.textLabel.text = NSLocalizedString(@"ConnectSet_Confirm", nil);
         cell.accessoryView = self.connectionSwitcher;
     }
     
@@ -113,7 +116,8 @@
     
     if (section == 0)
     {
-        result = @"通讯连接";
+        //result = @"通讯连接";
+        result = NSLocalizedString(@"ConnectSet_Info_Title", nil);
     }
 
     return result;
@@ -126,7 +130,8 @@
     if (section == 0)
     {
         // 20140917 by wh
-        result = @"输入控制器IP地址、端口号";
+        //result = @"输入控制器IP地址、端口号";
+        result = NSLocalizedString(@"ConnectSet_Info_Bottom", nil);
     }
     
     return result;

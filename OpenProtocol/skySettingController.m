@@ -282,7 +282,8 @@
         switch (indexPath.row)
         {
             case 0:
-                cell.labelTitle.text = @"屏幕行数:";
+                //cell.labelTitle.text = @"屏幕行数:";
+                cell.labelTitle.text = NSLocalizedString(@"SpecSet_Row", nil);
                 cell.lableValue.text = [NSString stringWithFormat:@"%ld",[_myDataSource getCurrentScreenRows]];
                 cell.valueStepper.minimumValue = 1;
                 cell.valueStepper.maximumValue = 16;
@@ -295,7 +296,8 @@
                 break;
                 
             case 1:
-                cell.labelTitle.text = @"屏幕列数:";
+                //cell.labelTitle.text = @"屏幕列数:";
+                cell.labelTitle.text = NSLocalizedString(@"SpecSet_Column", nil);
                 cell.lableValue.text = [NSString stringWithFormat:@"%ld",[_myDataSource getCurrentScreenColumns]];
                 cell.valueStepper.minimumValue = 1;
                 cell.valueStepper.maximumValue = 16;
@@ -317,7 +319,8 @@
         switch (indexPath.row)
         {
             case 0:
-                cell.cellTitle.text = @"屏幕输出分辨率";
+                //cell.cellTitle.text = @"屏幕输出分辨率";
+                cell.cellTitle.text = NSLocalizedString(@"SpecSet_Res", nil);
                 cell.cellDetail.text = [_resArray objectAtIndex:[_myDataSource getCurrentScreenResolution]];
                 cell.cellSlider.minimumValue = 0;
                 cell.cellSlider.maximumValue = 7;
@@ -330,7 +333,8 @@
                 break;
                 
             case 1:
-                cell.cellTitle.text = @"控制器类型选择";
+                //cell.cellTitle.text = @"控制器类型选择";
+                cell.cellTitle.text = NSLocalizedString(@"SpecSet_Type", nil);
                 cell.cellDetail.text = [_typeArray objectAtIndex:[_myDataSource getCurrentControllerType]];
                 cell.cellSlider.minimumValue = 1;
                 cell.cellSlider.maximumValue = 3;
@@ -353,7 +357,8 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
         
-        cell.textLabel.text = @"确认控制器设置";
+        //cell.textLabel.text = @"确认控制器设置";
+        cell.textLabel.text = NSLocalizedString(@"SpecSet_Confirm",nil);
         cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.1 blue:0.0 alpha:1.0];
         //cell.textLabel.textAlignment = UITextAlignmentCenter;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -373,7 +378,8 @@
         switch (indexPath.row)
         {
             case 0:     // 掉电记忆
-                cell.textLabel.text = @"掉电记忆功能";
+                //cell.textLabel.text = @"掉电记忆功能";
+                cell.textLabel.text = NSLocalizedString(@"SpecSet_PowerSave", nil);
                 cell.accessoryView = _switchPowerSave;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 [_switchPowerSave setOn:[_myDataSource getCurrentPowerStatus]];
@@ -381,7 +387,8 @@
                 break;
                 
             case 1:     // 温控开关
-                cell.textLabel.text = @"智能温控功能";
+                //cell.textLabel.text = @"智能温控功能";
+                cell.textLabel.text = NSLocalizedString(@"SpecSet_Temperature", nil);
                 cell.accessoryView = _switchTemperature;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 [_switchTemperature setOn:[_myDataSource getCurrentTemperatureStatus]];
@@ -389,7 +396,8 @@
                 break;
                 
             case 2:     // 边缘融合
-                cell.textLabel.text = @"边缘融合功能";
+                //cell.textLabel.text = @"边缘融合功能";
+                cell.textLabel.text = NSLocalizedString(@"SpecSet_Edgeblending", nil);
                 cell.accessoryView = _switchStraight;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 [_switchStraight setOn:[_myDataSource getCurrentStraightStatus]];
@@ -397,7 +405,8 @@
                 break;
                 
             case 3:     // 蜂鸣器开关
-                cell.textLabel.text = @"蜂鸣器开关";
+                //cell.textLabel.text = @"蜂鸣器开关";
+                cell.textLabel.text = NSLocalizedString(@"SpecSet_Buzzer", nil);
                 cell.accessoryView = _switchBuzzer;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 [_switchBuzzer setOn:[_myDataSource getCurrentBuzzerStatus]];
@@ -416,15 +425,18 @@
     
     if (section == 0)
     {
-        strResult = @"大屏幕拼接规格";
+        //strResult = @"大屏幕拼接规格";
+        strResult = NSLocalizedString(@"SpecSet_Info_RC", nil);
     }
     else if (section == 1)
     {
-        strResult = @"控制器类型与输出分辨率";
+        //strResult = @"控制器类型与输出分辨率";
+        strResult = NSLocalizedString(@"SpecSet_Info_Res", nil);
     }
     else if (section == 2)
     {
-        strResult = @"控制器常规参数设置";
+        //strResult = @"控制器常规参数设置";
+        strResult = NSLocalizedString(@"SpecSet_Info_Others", nil);
     }
     
     return strResult;

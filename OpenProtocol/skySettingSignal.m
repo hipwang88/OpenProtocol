@@ -147,7 +147,8 @@
     {
         skyTableStepperCell *cell = (skyTableStepperCell *)[tableView dequeueReusableCellWithIdentifier:kTableStepperCell];
         
-        cell.labelTitle.text = @"板卡数目:";
+        //cell.labelTitle.text = @"板卡数目:";
+        cell.labelTitle.text = NSLocalizedString(@"SignalSet_Num", nil);
         cell.lableValue.text = [NSString stringWithFormat:@"%ld",[_myDataSource getSignalCardNumbers]];
         cell.valueStepper.minimumValue = 1;
         cell.valueStepper.maximumValue = 24;
@@ -177,10 +178,12 @@
     
     if (section == 0)
     {
-        strResult = @"输入信号板卡数目选择";
+        //strResult = @"输入信号板卡数目选择";
+        strResult = NSLocalizedString(@"SignalSet_Info_CardNum", nil);
     }
     else
-        strResult = @"选择每张输入板卡的信号类型";
+        //strResult = @"选择每张输入板卡的信号类型";
+        strResult = NSLocalizedString(@"SignalSet_Info_CardType", nil);
     
     return strResult;
 }

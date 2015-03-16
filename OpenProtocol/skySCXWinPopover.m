@@ -34,7 +34,8 @@
 {
     [super viewDidLoad];
 
-    self.title = @"窗口功能菜单";
+    //self.title = @"窗口功能菜单";
+    self.title = NSLocalizedString(@"UnitMenu", nil);
     _array = [[NSMutableArray alloc] init];
     [_array addObject:[UIImage imageNamed:@"BigPic.png"]];
     [_array addObject:[UIImage imageNamed:@"Unit.png"]];
@@ -113,17 +114,21 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"功能项选择";
+    //return @"功能项选择";
+    return  NSLocalizedString(@"UnitMenu_Info_Title", nil);
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    NSString *footString = [NSString stringWithFormat:@"全屏：让拼接墙全屏显示本窗口\n大画面分解：将大画面状态窗口分解成单画面\n信号切换：点击进入信号切换页面选择输入信号\n叠加开窗：实现窗口叠加功能，一个画面上叠加四个子窗口"];
+    //NSString *footString = [NSString stringWithFormat:@"全屏：让拼接墙全屏显示本窗口\n大画面分解：将大画面状态窗口分解成单画面\n信号切换：点击进入信号切换页面选择输入信号\n叠加开窗：实现窗口叠加功能，一个画面上叠加四个子窗口"];
+    NSString *footString = [NSString stringWithFormat:NSLocalizedString(@"UnitMenu_Info_Bottom1", nil)];
     
     // 如果现在是大画面状态
     if ([_delegatePop isOverlying])
     {
-        footString = [NSString stringWithFormat:@"全屏：让拼接墙全屏显示本窗口\n大画面分解：将大画面状态窗口分解成单画面\n信号切换：点击进入信号切换页面选择输入信号\n退出叠加状态：还原窗口为普通状态\n添加子窗口：在画面上加入一个叠加子窗"];
+        //footString = [NSString stringWithFormat:@"全屏：让拼接墙全屏显示本窗口\n大画面分解：将大画面状态窗口分解成单画面\n信号切换：点击进入信号切换页面选择输入信号\n退出叠加状态：还原窗口为普通状态\n添加子窗口：在画面上加入一个叠加子窗"];
+        
+        footString = [NSString stringWithFormat:NSLocalizedString(@"UnitMenu_Info_Bottom2", nil)];
     }
     
     return footString;

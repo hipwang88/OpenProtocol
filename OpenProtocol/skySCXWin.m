@@ -1019,9 +1019,18 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
     
     // 如果开窗状态
     if (bOverlying)
-        array = [[NSMutableArray alloc] initWithObjects:@"全屏",@"大画面分解",@"信号切换",@"退出叠加状态",@"添加子窗口", nil];
+        array = [[NSMutableArray alloc] initWithObjects:NSLocalizedString(@"UnitMenu_Full", nil),
+                 NSLocalizedString(@"UnitMenu_Resolve", nil),
+                 NSLocalizedString(@"UnitMenu_SignalSwitch", nil),
+                 NSLocalizedString(@"UnitMenu_ExitOpenwin", nil),
+                 NSLocalizedString(@"UnitMenu_Add", nil),
+                 nil];
     else
-        array = [[NSMutableArray alloc] initWithObjects:@"全屏",@"大画面分解",@"信号切换",@"叠加开窗", nil];
+        array = [[NSMutableArray alloc] initWithObjects:NSLocalizedString(@"UnitMenu_Full", nil),
+                 NSLocalizedString(@"UnitMenu_Resolve", nil),
+                 NSLocalizedString(@"UnitMenu_SignalSwitch", nil),
+                 NSLocalizedString(@"UnitMenu_OpenWin", nil),
+                 nil];
     
     return array;
 }
@@ -1044,7 +1053,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"窗口全屏功能在大画面状态与叠加开窗状态不能够使用" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SystemInfo", nil) message:NSLocalizedString(@"SystemInfo_FULL", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SystemInfo_sure", nil) otherButtonTitles:nil, nil];
         [alert show];
     }
 }
@@ -1061,7 +1070,7 @@ static CGFloat skyDistanceWithTwoPoints(CGPoint point1, CGPoint point2)
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"大画面分解只能在窗口是大画面状态下使用" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SystemInfo", nil) message:NSLocalizedString(@"SystemInfo_Resolve", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SystemInfo_sure", nil) otherButtonTitles:nil, nil];
         [alert show];
     }
 }

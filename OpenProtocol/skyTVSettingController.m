@@ -210,7 +210,8 @@
             case 0:
                 _serverIP.text = [_tvDataSource getCurrnetCmdIPAddress];
                 _serverIP.textColor = [UIColor blueColor];
-                cell.textLabel.text = @"控制器IP";
+                //cell.textLabel.text = @"控制器IP";
+                cell.textLabel.text = NSLocalizedString(@"PowerSet_HUBIp", nil);
                 cell.accessoryView = _serverIP;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
@@ -218,13 +219,15 @@
             case 1:
                 _serverPort.text = [NSString stringWithFormat:@"%ld",[_tvDataSource getCurrentCmdPortNumber]];
                 _serverPort.textColor = [UIColor blueColor];
-                cell.textLabel.text = @"控制器端口";
+                //cell.textLabel.text = @"控制器端口";
+                cell.textLabel.text = NSLocalizedString(@"PowerSet_HUBPort", nil);
                 cell.accessoryView = _serverPort;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
                 
             case 2:
-                cell.textLabel.text = @"连接命令控制器";
+                //cell.textLabel.text = @"连接命令控制器";
+                cell.textLabel.text = NSLocalizedString(@"PowerSet_Connection", nil);
                 cell.accessoryView = _connectionSwitcher;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
@@ -235,14 +238,16 @@
         switch (indexPath.row)
         {
             case 0:
-                cell.textLabel.text = @"屏幕开机";
+                //cell.textLabel.text = @"屏幕开机";
+                cell.textLabel.text = NSLocalizedString(@"PowerSet_PowerOn", nil);
                 cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.1 blue:0.0 alpha:1.0];
                 cell.textLabel.textAlignment = NSTextAlignmentCenter;
                 //cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
                 
             case 1:
-                cell.textLabel.text = @"屏幕关机";
+                //cell.textLabel.text = @"屏幕关机";
+                cell.textLabel.text = NSLocalizedString(@"PowerSet_PowerOff", nil);
                 cell.textLabel.textColor = [UIColor colorWithRed:0.9 green:0.1 blue:0.0 alpha:1.0];
                 cell.textLabel.textAlignment = NSTextAlignmentCenter;
                 //cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -259,11 +264,13 @@
     
     if (section == 0)
     {
-        result = @"命令控制器网络设置";
+        //result = @"命令控制器网络设置";
+        result = NSLocalizedString(@"PowerSet_Info_HUB", nil);
     }
     else if (section == 1)
     {
-        result = @"屏幕开关机操作";
+        //result = @"屏幕开关机操作";
+        result = NSLocalizedString(@"PowerSet_Info_Options", nil);
     }
     
     return result;
@@ -275,11 +282,13 @@
     
     if (section == 0)
     {
-        result = @"输入命令控制器IP地址和端口号进行连接";
+        //result = @"输入命令控制器IP地址和端口号进行连接";
+        result = NSLocalizedString(@"PowerSet_Info_Con", nil);
     }
     else if (section == 1)
     {
-        result = @"请点击进行操作";
+        //result = @"请点击进行操作";
+        result = NSLocalizedString(@"PowerSet_Info_HowTo", nil);
     }
     
     return result;
