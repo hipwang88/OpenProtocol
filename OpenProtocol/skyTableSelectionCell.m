@@ -50,13 +50,13 @@
 
 #pragma mark - Public Methods
 // 获取选择状态
-- (int)getCurrentSelectionType
+- (NSInteger)getCurrentSelectionType
 {
     return _selectionIndex;
 }
 
 // 设置选择状态
-- (void)setCurrentSelectionType:(int)nType
+- (void)setCurrentSelectionType:(NSInteger)nType
 {
     _selectionIndex = nType;
     

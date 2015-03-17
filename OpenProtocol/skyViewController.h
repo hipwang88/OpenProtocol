@@ -19,6 +19,8 @@
 #import "skySettingController.h"
 #import "skySettingSignal.h"
 #import "skySettingSDKs.h"
+#import "skyTVSettingController.h"  // 20140917 by wh for TV Setting Controller
+#import "skyTVProtocol.h"           // 20140917 by wh for TV Protocol
 
 // class skyViewController
 // delegate: skyUnderPaintDelegate --- 主控视图底图代理
@@ -28,9 +30,11 @@
 //           skyModelViewDelegate --- 情景模式代理
 //           skySettingConnectionDelegate --- 通讯设置代理
 //           skySettingControllerDelegate --- 控制器设置代理
+//           skySettingSDKsDelegate --- 协议设置代理
+//           skyTVSettingControllerDelegate --- 机芯操作代理
 @interface skyViewController : UIViewController<skyUnderPaintDelegate,skyExternWinDelegate,
     skySCXWinDelegate,skySubWinDelegate,skyModelViewDelegate,skySettingConnectionDelegate,
-    skySettingControllerDelegate,skySettingSDKsDelegate>
+    skySettingControllerDelegate,skySettingSDKsDelegate,skyTVSettingControllerDelegate>
 {
     skySCXWin *currentSCXWin;           // 当前控制的窗口
     skySubWin *currentSubWin;           // 当前叠加子窗
@@ -57,6 +61,8 @@
 @property (strong, nonatomic) NSMutableArray *subWinContainer;                          // 叠加子窗口容器
 // 协议适配器
 @property (strong, nonatomic) skyProtocolAdapter *protocolAdapter;                      // 协议适配器
+// 控制机芯 20140917 by wh
+@property (strong, nonatomic) skyTVProtocol *tvProtocol;                                // 机芯控制协议封装
 
 ///////////////////////  Methods  ///////////////////////////
 // 状态保存

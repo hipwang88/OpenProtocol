@@ -64,7 +64,8 @@
 {
     [super viewDidLoad];
 
-    self.title = @"信号切换";
+    //self.title = @"信号切换";
+    self.title = NSLocalizedString(@"UnitMenu_SignalSwitch", nil);
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,10 +126,10 @@
 - (NSString *)getCardNameWithIndexPath:(NSIndexPath *)indexPath
 {
     NSString *stringValue,*stringType;
-    int nIndex,nType;
+    NSInteger nIndex,nType;
     
     // 获取板卡类型
-    nType = [[_dictData objectForKey:[NSString stringWithFormat:@"Card-%d",indexPath.section+1]] integerValue];
+    nType = [[_dictData objectForKey:[NSString stringWithFormat:@"Card-%ld",indexPath.section+1]] integerValue];
     switch (nType) {
         case 0:
             stringType = [NSString stringWithFormat:@"HDMI - "];
@@ -173,7 +174,7 @@
     }
     
     // 设置数据
-    stringValue = [NSString stringWithFormat:@"%@%d",stringType,nIndex];
+    stringValue = [NSString stringWithFormat:@"%@%ld",stringType,nIndex];
 
     return stringValue;
 }
@@ -181,11 +182,11 @@
 // 获取板卡信号图片
 - (UIImage *)getCardImageWithIndexPath:(NSIndexPath *)indexPath
 {
-    int nType;
+    NSInteger nType;
     UIImage *image;
     
     // 获取板卡类型
-    nType = [[_dictData objectForKey:[NSString stringWithFormat:@"Card-%d",indexPath.section+1]] integerValue];
+    nType = [[_dictData objectForKey:[NSString stringWithFormat:@"Card-%ld",indexPath.section+1]] integerValue];
     switch (nType) {
         case 0:
             image = [UIImage imageNamed:@"signal_HDMI-Small"];
@@ -211,7 +212,7 @@
 - (void)calculateSelectionDatas:(NSIndexPath *)indexPath
 {
     // 获取信号类型
-    _selectSourceType = [[_dictData objectForKey:[NSString stringWithFormat:@"Card-%d",indexPath.section+1]] integerValue];
+    _selectSourceType = [[_dictData objectForKey:[NSString stringWithFormat:@"Card-%ld",indexPath.section+1]] integerValue];
     
     // 计算通道
     // 根据控制器类型设置板卡数据
@@ -262,7 +263,7 @@
         // 选择Section
         if (self.selectIndex.section == section)
         {
-            if ([[_dictData objectForKey:[NSString stringWithFormat:@"Card-%d",_selectIndex.section+1]] integerValue] == 3)
+            if ([[_dictData objectForKey:[NSString stringWithFormat:@"Card-%ld",_selectIndex.section+1]] integerValue] == 3)
                 return 8 + 1;
             else
                 return 4 + 1;
@@ -306,14 +307,14 @@
         }
         
         NSString *stringType;
-        switch ([[_dictData objectForKey:[NSString stringWithFormat:@"Card-%d",indexPath.section+1]] integerValue])
+        switch ([[_dictData objectForKey:[NSString stringWithFormat:@"Card-%ld",indexPath.section+1]] integerValue])
         {
             case 0: stringType = [NSString stringWithFormat:@"HDMI"]; break;
             case 1: stringType = [NSString stringWithFormat:@"DVI"]; break;
             case 2: stringType = [NSString stringWithFormat:@"VGA"]; break;
             case 3: stringType = [NSString stringWithFormat:@"CVBS"]; break;
         }
-        cell.titleLabel.text = [NSString stringWithFormat:@"Card.%d - %@",indexPath.section+1,stringType];
+        cell.titleLabel.text = [NSString stringWithFormat:@"Card.%ld - %@",indexPath.section+1,stringType];
         cell.imageView.image = [UIImage imageNamed:@"signal_Card-Small"];
         [cell changeArrowWithUp:([self.selectIndex isEqual:indexPath] ? YES : NO)];
         return cell;
@@ -366,7 +367,7 @@
     
     [self.tableView beginUpdates];
     
-    int section = self.selectIndex.section;
+    NSInteger section = self.selectIndex.section;
     int contentCount;
     switch (_nControllerType)
     {

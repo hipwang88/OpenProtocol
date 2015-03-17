@@ -89,7 +89,8 @@
     _configLabel.backgroundColor = [UIColor clearColor];
     _configLabel.textColor = [UIColor whiteColor];
     _configLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-    _configLabel.text = @"功能扩展视图，请根据需要点击右侧按钮！";
+    //_configLabel.text = @"功能扩展视图，请根据需要点击右侧按钮！";
+    _configLabel.text = NSLocalizedString(@"ExFunctionView", nil);
     
     // 模拟信号新建
     CGRect cvbsBtnFrame = CGRectMake(frameWidth-110, 2, 40, 40);
@@ -121,7 +122,8 @@
 // 还原说明文字
 - (void)resetConfigLabel
 {
-    _configLabel.text = @"功能扩展视图，请根据需要点击右侧按钮！";
+    //_configLabel.text = @"功能扩展视图，请根据需要点击右侧按钮！";
+    _configLabel.text = NSLocalizedString(@"ExFunctionView", nil);
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -139,8 +141,8 @@
 // CVBS新建按钮按下消息
 - (void)cvbsBtnClickHandle:(id)sender
 {
-    _configLabel.text = @"模拟信号新建：所有窗口以模拟信号一对一输出。";
-    
+    //_configLabel.text = @"模拟信号新建：所有窗口以模拟信号一对一输出。";
+    _configLabel.text = NSLocalizedString(@"ExFunctionInfo_CVBS", nil);
     // 通过代理对象发送模拟新建功能
     [_delegate newSignalWithCVBS];
 }
@@ -148,8 +150,8 @@
 // HDMI新建按钮按下消息
 - (void)hdmiBtnClickHandle:(id)sender
 {
-    _configLabel.text = @"高清信号新建：所有窗口以高清数字信号一对一输出。";
-    
+    //_configLabel.text = @"高清信号新建：所有窗口以高清数字信号一对一输出。";
+    _configLabel.text = NSLocalizedString(@"ExFunctionInfo_HDMI", nil);
     // 通过代理对象发送高清新建功能
     [_delegate newSignalWithHDMI];
 }

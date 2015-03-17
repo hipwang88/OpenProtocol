@@ -1,0 +1,100 @@
+/* 
+  Localizable.strings
+  OpenProtocol
+
+  Created by skyworth on 15/3/16.
+  Copyright (c) 2015年 skyworth. All rights reserved.
+*/
+
+
+// 系统栏
+"SystemTitle" = "Skyworth digital splicing system";
+"Setting" = "Settings";
+"Model" = "Model";
+
+// 设置
+"Setting_Title" = "Controller Setttings";
+"Setting_Info_Title" = "Confirg";
+"Setting_Info_Bottom" = "Connection,Specfications,Signal,Protocal and Unit Control";
+"Setting_Connect" = "connection";
+"Setting_Spec" = "Specifications";
+"Setting_Signal" = "signal";
+"Setting_Protocal" = "protocal";
+"Setting_Power" = "unit on/off";
+
+// 通讯设置
+"ConnectSet_Info_Title" = "connection set";
+"ConnectSet_Info_Bottom" = "Input Conntroller IP address and port";
+"ConnectSet_IP" = "IP";
+"ConnectSet_Port" = "Port";
+"ConnectSet_Confirm" = "conntect";
+
+// 控制器规格
+"SpecSet_Info_RC" = "Specifications";
+"SpecSet_Info_Res" = "conntroller type and Resolution";
+"SpecSet_Info_Others" = "others";
+"SpecSet_Row" = "Row";
+"SpecSet_Column" = "column";
+"SpecSet_Res" = "Resolution";
+"SpecSet_Type" = "type";
+"SpecSet_PowerSave" = "PowerSave";
+"SpecSet_Temperature" = "Temperature";
+"SpecSet_Edgeblending" = "Edgeblending";
+"SpecSet_Buzzer" = "Buzzer";
+"SpecSet_Confirm" = "Confirm";
+
+// 信号管理
+"SignalSet_Info_CardNum" = "count of the input card";
+"SignalSet_Info_CardType" = "select card type";
+"SignalSet_Num" = "Number";
+
+// 协议选择
+"Protocal_Cell1" = "LCD_Controller12-V5 internal";
+"Protocal_Cell2" = "LCD_Controller12-V5 open";
+
+// 屏幕开关机
+"PowerSet_Info_HUB" = "HUB485 Setting";
+"PowerSet_Info_Con" = "Input HUB485 IP and Port";
+"PowerSet_Info_Options" = "Unit Power on/off";
+"PowerSet_Info_HowTo" = "select power on or power off by click function button";
+"PowerSet_HUBIp" = "HUB485 IP";
+"PowerSet_HUBPort" = "HUB485 Port";
+"PowerSet_Connection" = "connect";
+"PowerSet_PowerOn" = "power on";
+"PowerSet_PowerOff" = "power off";
+
+// 窗口菜单
+"UnitMenu" = "Unit Menu";
+"UnitMenu_Info_Title" = "Functions";
+"UnitMenu_Info_Bottom1" = "full:Let the window full screen splicing wall\nresolve:The big picture window state decomposed into a single picture\nSignal switch: Into input list\nOpenWin:Enter the open window fucntion,the system can open 5 windows";
+"UnitMenu_Info_Bottom2" = "full:Let the window full screen splicing wall\nresolve:The big picture window state decomposed into a single picture\nSignal switch: Into input list\nExitOpenWin:Exit the open window fucntion\nAdd window: Add a window";
+"UnitMenu_Full" = "full";
+"UnitMenu_Resolve" = "resolve";
+"UnitMenu_SignalSwitch" = "signal switch";
+"UnitMenu_OpenWin" = "openwin";
+"UnitMenu_ExitOpenwin" = "exit openwin";
+"UnitMenu_Add" = "add window";
+
+// 子窗口功能菜单
+"SubMenu" = "window menu";
+"SubMenu_Info_Title" = "Functions";
+"SubMenu_Info_Bottom" = "close window:close the window that you select\nsignal switch:Into input list";
+"SubMenu_SwitchSignal" = "signal switch";
+"SubMenu_Close" = "close windows";
+
+// 扩展视图
+"ExFunctionView" = "Ex-Functions View, Select fucntions what you want!";
+"ExFunctionInfo_CVBS" = "New with analog：All unit in analog signal";
+"ExFunctionInfo_HDMI" = "New with digital：All unit in digital signal";
+
+// 情景模式
+"ModelProfile_save" = "save";
+"ModelProfile_delete" = "delete";
+
+// 系统提示
+"SystemInfo" = "message";
+"SystemInfo_FULL" = "full cannot use in a big window";
+"SystemInfo_Resolve" = "resolve only in the window is full";
+"SystemInfo_Model" = "No model profile";
+"SystemInfo_Sub" = "maximun is 4";
+"SystemInfo_sure" = "OK";

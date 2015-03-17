@@ -12,13 +12,13 @@
 @protocol skySettingSignalDataSource <NSObject>
 
 // 获取板卡数目
-- (int)getSignalCardNumbers;
+- (NSInteger)getSignalCardNumbers;
 // 设置输入板卡数目
-- (void)setSignalCardNumber:(int)nNum;
+- (void)setSignalCardNumber:(NSInteger)nNum;
 // 获取板卡类型
-- (int)getCardTypeAtIndex:(int)nIndex;
+- (NSInteger)getCardTypeAtIndex:(NSInteger)nIndex;
 // 设置板卡类型
-- (void)setCardTypeAtIndex:(int)nIndex withValue:(int)nType;
+- (void)setCardTypeAtIndex:(NSInteger)nIndex withValue:(NSInteger)nType;
 // 重置信号数据
 - (void)resetSignalTypeData;
 

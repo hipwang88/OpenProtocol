@@ -9,7 +9,7 @@
 @protocol skySignalViewDelegate <NSObject>
 
 // 进行信号切换
-- (void)haveSignal:(int)nSourceType SwitchTo:(int)nChannelNum;
+- (void)haveSignal:(NSInteger)nSourceType SwitchTo:(NSInteger)nChannelNum;
 
 @end
 

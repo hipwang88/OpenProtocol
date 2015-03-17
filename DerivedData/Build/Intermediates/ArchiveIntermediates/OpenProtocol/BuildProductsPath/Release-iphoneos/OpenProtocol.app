@@ -1,0 +1,1 @@
+/Users/skyworth/Code-Everyday/OpenProtocol/DerivedData/Build/Intermediates/ArchiveIntermediates/OpenProtocol/InstallationBuildProductsLocation/Applications/OpenProtocol.app

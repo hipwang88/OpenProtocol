@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _protoclNames = [[NSMutableArray alloc] initWithObjects:@"LCD-Controller12-V5 内部协议",@"LCD-Controller12-V5 开放协议", nil];
+    _protoclNames = [[NSMutableArray alloc] initWithObjects:NSLocalizedString(@"Protocal_Cell1", nil),NSLocalizedString(@"Protocal_Cell2", nil), nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

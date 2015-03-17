@@ -37,20 +37,31 @@
     return YES;
 }
 
+// 20140916 by wh 下拉通知与上拉通知将进入后台
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    // 数据存储处理
+    [self.theApp appDefaultDatasSave];
+    [self.viewController appStatusSave];
+    // 网络连接调入后台
+    [self.viewController.protocolAdapter adapterConnectEnterBackground];
+    // 20140918 by wh 控屏网络调入后台
+    [self.viewController.tvProtocol serviceEnterBackground];
+
 }
 
 // 程序进入后台 将运行数据保存下来
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // 数据存储处理
-    [self.theApp appDefaultDatasSave];
-    [self.viewController appStatusSave];
+    //[self.theApp appDefaultDatasSave];
+    //[self.viewController appStatusSave];
     // 网络连接调入后台
     [self.viewController.protocolAdapter adapterConnectEnterBackground];
+    // 20140918 by wh 控屏网络调入后台
+    [self.viewController.tvProtocol serviceEnterBackground];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -63,6 +74,8 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     // 网络进入后台后 根据是否连接进行重连
     [self.viewController.protocolAdapter adapterReconnectToController];
+    // 20140917 by wh 重连网络
+    [self.viewController.tvProtocol reConnectToService];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

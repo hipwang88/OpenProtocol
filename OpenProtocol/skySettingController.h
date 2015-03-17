@@ -12,13 +12,13 @@
 @protocol skySettingControllerDataSource <NSObject>
 
 // 获取当前屏幕行数
-- (int)getCurrentScreenRows;
+- (NSInteger)getCurrentScreenRows;
 // 获取当前屏幕列数
-- (int)getCurrentScreenColumns;
+- (NSInteger)getCurrentScreenColumns;
 // 获取当前屏幕分辨率
-- (int)getCurrentScreenResolution;
+- (NSInteger)getCurrentScreenResolution;
 // 获取当前控制器类型
-- (int)getCurrentControllerType;
+- (NSInteger)getCurrentControllerType;
 // 获取当前掉电记忆状态
 - (BOOL)getCurrentPowerStatus;
 // 获取当前温控状态
@@ -34,9 +34,9 @@
 @protocol skySettingControllerDelegate <NSObject>
 
 // 设置当前控制器基本数据
-- (void)setCurrentRow:(int)nRows Column:(int)nColumns Resolution:(int)nRes;
+- (void)setCurrentRow:(NSInteger)nRows Column:(NSInteger)nColumns Resolution:(NSInteger)nRes;
 // 设置当前控制器类型
-- (void)setCurrentControllerType:(int)nType;
+- (void)setCurrentControllerType:(NSInteger)nType;
 // 设置当前掉电状态
 - (void)setCurrentPowerStatus:(BOOL)bFlag;
 // 设置当前温控状态

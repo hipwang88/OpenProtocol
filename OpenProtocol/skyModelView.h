@@ -12,13 +12,13 @@
 @protocol skyModelViewDataSource <NSObject>
 
 // 获取运行截图
-- (UIImage *)getModelImageAtIndex:(int)nIndex;
+- (UIImage *)getModelImageAtIndex:(NSInteger)nIndex;
 // 获取保存日期
-- (NSString *)getModelSaveDateAtIndex:(int)nIndex;
+- (NSString *)getModelSaveDateAtIndex:(NSInteger)nIndex;
 // 保存情景模式状态
 - (void)saveModelDataSource;
 // 确认情景模式是否可用
-- (BOOL)isModelCanBeUsedAtIndex:(int)nIndex;
+- (BOOL)isModelCanBeUsedAtIndex:(NSInteger)nIndex;
 
 @end
 

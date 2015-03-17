@@ -18,7 +18,7 @@
 // 初始化开放协议SDK
 - (id)initOpenSCXProtocol;
 // 连接TCP服务器
-- (BOOL)connectTCPService:(NSString *)hostAddress andPort:(int)nPort;
+- (BOOL)connectTCPService:(NSString *)hostAddress andPort:(NSInteger)nPort;
 // 端口TCP服务器
 - (void)disconnectWithTCPService;
 // 服务器重连
@@ -28,7 +28,7 @@
 
 /*******************************************************/
 // 1.控制器设置
-- (void)openSCXControllerSetRow:(int)nRow Column:(int)nColumn Resolution:(int)nRes;
+- (void)openSCXControllerSetRow:(NSInteger)nRow Column:(NSInteger)nColumn Resolution:(NSInteger)nRes;
 // 2.蜂鸣器开关
 - (void)openSCXBuzzerStatus:(BOOL)bFlag;
 // 3.掉电记忆开关
@@ -42,33 +42,33 @@
 // 7.情景新建 - HDMI
 - (void)openSCXModelNewWithHDMI;
 // 8.情景保存
-- (void)openSCXSaveModelAtIndex:(int)nIndex;
+- (void)openSCXSaveModelAtIndex:(NSInteger)nIndex;
 // 9.情景加载
-- (void)openSCXLoadModelAtIndex:(int)nIndex;
+- (void)openSCXLoadModelAtIndex:(NSInteger)nIndex;
 // 10.情景删除
-- (void)openSCXDeleteModelAtIndex:(int)nIndex;
+- (void)openSCXDeleteModelAtIndex:(NSInteger)nIndex;
 // 11.普通窗口信号切换
-- (void)openSCXSignalSwitchSCXWin:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXSignalSwitchSCXWin:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 12.叠加底图窗口信号切换
-- (void)openSCXSignalSwitchOpenUnderWin:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXSignalSwitchOpenUnderWin:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 13.叠加子窗口信号切换
-- (void)openSCXSignalSwitchSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXSignalSwitchSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 14.大画面拼接
-- (void)openSCXSpliceSCXWin:(int)nWinID StartPanel:(int)nStart VScreen:(int)nVCount HScreen:(int)nHCount ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXSpliceSCXWin:(NSInteger)nWinID StartPanel:(NSInteger)nStart VScreen:(NSInteger)nVCount HScreen:(NSInteger)nHCount ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 15.大画面分解
-- (void)openSCXResolveSCXWin:(int)nWinID;
+- (void)openSCXResolveSCXWin:(NSInteger)nWinID;
 // 16.进入叠加开窗
-- (void)openSCXEnterOpenStatus:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXEnterOpenStatus:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 17.退出叠加开窗
-- (void)openSCXLeaveOpenStatus:(int)nWinID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXLeaveOpenStatus:(NSInteger)nWinID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 18.添加子窗口
-- (void)openSCXAddSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXAddSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 19.关闭子窗口
-- (void)openSCXDeleteSubWin:(int)nSubID ofType:(int)nSrcType toChannel:(int)nSrcPath;
+- (void)openSCXDeleteSubWin:(NSInteger)nSubID ofType:(NSInteger)nSrcType toChannel:(NSInteger)nSrcPath;
 // 20.移动子窗口
-- (void)openSCXMoveSubWin:(int)nSubID StartX:(int)nStartX StartY:(int)nStartY;
+- (void)openSCXMoveSubWin:(NSInteger)nSubID StartX:(NSInteger)nStartX StartY:(NSInteger)nStartY;
 // 21.缩放子窗口
-- (void)openSCXResizeSubWin:(int)nSubID WinWidth:(int)nWidth WinHeight:(int)nHeight;
+- (void)openSCXResizeSubWin:(NSInteger)nSubID WinWidth:(NSInteger)nWidth WinHeight:(NSInteger)nHeight;
 /*******************************************************/
 
 ///////////////////// Ends /////////////////////////////
