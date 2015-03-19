@@ -960,7 +960,7 @@
 				INFOPLIST_FILE = "OpenProtocol/OpenProtocol-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a1afe8b-25ef-4dd8-8f23-77d5a3a6d623";
+				PROVISIONING_PROFILE = "d5f17c16-4ddf-49ed-a79a-16d42e6dc9c4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -980,7 +980,7 @@
 				INFOPLIST_FILE = "OpenProtocol/OpenProtocol-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a1afe8b-25ef-4dd8-8f23-77d5a3a6d623";
+				PROVISIONING_PROFILE = "d5f17c16-4ddf-49ed-a79a-16d42e6dc9c4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

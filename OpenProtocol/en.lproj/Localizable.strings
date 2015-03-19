@@ -17,7 +17,7 @@
 "Setting_Info_Title" = "Confirg";
 "Setting_Info_Bottom" = "Connection,Specfications,Signal,Protocal and Unit Control";
 "Setting_Connect" = "connection";
-"Setting_Spec" = "Specifications";
+"Setting_Spec" = "specifications";
 "Setting_Signal" = "signal";
 "Setting_Protocal" = "protocal";
 "Setting_Power" = "unit on/off";
@@ -30,12 +30,12 @@
 "ConnectSet_Confirm" = "conntect";
 
 // 控制器规格
-"SpecSet_Info_RC" = "Specifications";
+"SpecSet_Info_RC" = "specifications";
 "SpecSet_Info_Res" = "conntroller type and Resolution";
 "SpecSet_Info_Others" = "others";
-"SpecSet_Row" = "Row";
+"SpecSet_Row" = "row";
 "SpecSet_Column" = "column";
-"SpecSet_Res" = "Resolution";
+"SpecSet_Res" = "resolution";
 "SpecSet_Type" = "type";
 "SpecSet_PowerSave" = "PowerSave";
 "SpecSet_Temperature" = "Temperature";
