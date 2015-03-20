@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/skyworth/Code-Everyday/OpenProtocol/OpenProtocol/skySecondLevelView.m \
-  /Users/skyworth/Code-Everyday/OpenProtocol/OpenProtocol/skySecondLevelView.h
+  /Users/skyworth/Code-Everyday/y-bing/OpenProtocol/OpenProtocol/skySecondLevelView.m \
+  /Users/skyworth/Code-Everyday/y-bing/OpenProtocol/OpenProtocol/skySecondLevelView.h

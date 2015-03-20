@@ -88,6 +88,10 @@
 		<data>
 		7oxHchl4XCz1w2gRIX5f3Nj88Tg=
 		</data>
+		<key>Info.plist</key>
+		<data>
+		cSD7bwmd439WLvyEtdiJp+1VPOY=
+		</data>
 		<key>LaunchImage-700-Landscape@2x~ipad.png</key>
 		<data>
 		TG+BRG2SouELQMMlIbVDrMz0W1U=
@@ -96,6 +100,10 @@
 		<data>
 		01tTgd06ZGQjHSCgH8OjmdX+DJU=
 		</data>
+		<key>OpenProtocol-Info.plist</key>
+		<data>
+		Ggf7haqSXhNxUarHc3z7nqUZgR8=
+		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
@@ -103,6 +111,10 @@
 		<key>ProtocalSet.png</key>
 		<data>
 		s3dDqO9KjPSxzv2QZycAOBU2Cws=
+		</data>
+		<key>ResourceRules.plist</key>
+		<data>
+		lwspKkpks/znbeAxH6w3tE+gCNg=
 		</data>
 		<key>SCX.png</key>
 		<data>
@@ -166,12 +178,26 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		XWbo5xAECL+lGHh8eNuHPpIDuf0=
+		PYR2dHFITDFiZ1D1hwxxxSgjrUc=
 		</data>
 		<key>en.lproj/InfoPlist.strings</key>
-		<data>
-		zmV6UqBSo6r1NOz798vd5O4zTBA=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			giE6YeRc2SaB9GXgthtNNpjt5qU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>en.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CaqxStileOVhu3IrhzUFmzyriZc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>monitor.png</key>
 		<data>
 		3rtkFuYpwkvCXsbjbdTImuTksEQ=
@@ -210,79 +236,79 @@
 		</data>
 		<key>skyCell1.nib</key>
 		<data>
-		sXw5RUjk0UmGxX2QabrbV3eij54=
+		qLaXhNS3aOzwLZCUy5N4QAG9iBA=
 		</data>
 		<key>skyCell2.nib</key>
 		<data>
-		QiikLNOkUO0FHqm26uzPELC23d0=
+		/81UQLLG6gnAdPZUjpbm1I/B4Lc=
 		</data>
 		<key>skyModelCell.nib</key>
 		<data>
-		i3OodTfucCtr8ESHT1vzGEURZSM=
+		N8w+JC4KE+mMT1t17VM6uzVcG1M=
 		</data>
 		<key>skyModelView.nib</key>
 		<data>
-		xqMe+RJKHTWhHYj65rLQ+OMWEyI=
+		ULnNyvLxN/BW3d5YuAWyy1LOhaA=
 		</data>
 		<key>skySettingConnection.nib</key>
 		<data>
-		htO/zc1hRM90kVLDtmyL9cuZ+zo=
+		hH9E9whwEWAthpXnD942T+/L1CY=
 		</data>
 		<key>skySettingController.nib</key>
 		<data>
-		RX/DVhk5922Y5BDwQfIzZ/2aZcY=
+		NMApSsiAMni/SUjLkzhJzELZxw0=
 		</data>
 		<key>skySettingMainView.nib</key>
 		<data>
-		1yhnRJpxVTBTJzxQ1o6QUuVZzSY=
+		M1Rssw3vwrpQEX6Kdc0FrPxjRoQ=
 		</data>
 		<key>skySettingSDKs.nib</key>
 		<data>
-		Ir+WzaBpsosCT8Ofqvy2mXcW9yM=
+		4lJKq3HV5X1CWC9P6q24kmjjiZY=
 		</data>
 		<key>skySettingSignal.nib</key>
 		<data>
-		vYulkhfB96shZIzu+cHYuQEFBHI=
+		65bDzzPDRgcX6OOMCpThvf9YanM=
 		</data>
 		<key>skySignalView.nib</key>
 		<data>
-		k9v9oau5k8mFz61fdSMGB8EEW7E=
+		IyrEHr3jqH2RGzRfdaTkBZGRcPc=
 		</data>
 		<key>skyTVSettingController.nib</key>
 		<data>
-		Lys1I8A+4stxzh1M5+tJnzcwWhY=
+		7kMosVm7yCRqk7GPGRPxUpRMTTs=
 		</data>
 		<key>skyTableButtonCell.nib</key>
 		<data>
-		007M4/b4XhoBL8PZICdFfwR0LMM=
+		g8h/9sqUXKce8fcfBHwlH50yRZ0=
 		</data>
 		<key>skyTableSelectionCell.nib</key>
 		<data>
-		/KuqZlWz+uv4UOpGM8aYCn+Dzs4=
+		YT1Cns8PTG8jo3MRA7vL7dwCryg=
 		</data>
 		<key>skyTableSliderCell.nib</key>
 		<data>
-		lca6HiSelUSt2Shm0/9t4nZdBw0=
+		6smnkJSWEHK7FIqpQvEmxe7sBhc=
 		</data>
 		<key>skyTableStepperCell.nib</key>
 		<data>
-		1WWyumuwBaRbTZkjgeJudLbR+uk=
+		rRG+2/rCkH9es+7vwm5qrwsvmAs=
 		</data>
 		<key>skyViewController_iPad.nib/objects-8.0+.nib</key>
 		<data>
-		nnbdbI3009KoqJyNHeLy2yY2sj4=
+		aJyN4hK+qh38dhR/oFIlwyIujNo=
 		</data>
 		<key>skyViewController_iPad.nib/objects.nib</key>
 		<data>
-		wgp2wJQUDTpXW/a+ZNFmULKRjmQ=
+		Kx9OFO38F05XDiPPq9n4TpKzyv4=
 		</data>
 		<key>skyViewController_iPad.nib/runtime.nib</key>
 		<data>
-		2sdvBBbLiR8sSczhdHDOO379FHM=
+		NW8//+X25oQ1T+eSUeOjdvLmRyw=
 		</data>
 		<key>skyViewController_iPhone.nib</key>
 		<data>
-		fk5+EsNlCa4WqVMFJYhtXHqrEEo=
+		42c7aBkRtzRWep2/YVab22sl7Gw=
 		</data>
 		<key>switch.png</key>
 		<data>
@@ -296,6 +322,24 @@
 		<data>
 		FCToB5wmvd3QOrOH24roW3tw+OY=
 		</data>
+		<key>zh_Hans.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zRmeYzqS9EWaZ1Zi/I8r6hM1d04=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>zh_Hans.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			poULn1xm3dtbKFzFFJ4IYJ8L3PI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -391,13 +435,17 @@
 		<data>
 		01tTgd06ZGQjHSCgH8OjmdX+DJU=
 		</data>
-		<key>PkgInfo</key>
+		<key>OpenProtocol-Info.plist</key>
 		<data>
-		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		Ggf7haqSXhNxUarHc3z7nqUZgR8=
 		</data>
 		<key>ProtocalSet.png</key>
 		<data>
 		s3dDqO9KjPSxzv2QZycAOBU2Cws=
+		</data>
+		<key>ResourceRules.plist</key>
+		<data>
+		lwspKkpks/znbeAxH6w3tE+gCNg=
 		</data>
 		<key>SCX.png</key>
 		<data>
@@ -461,12 +509,26 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		XWbo5xAECL+lGHh8eNuHPpIDuf0=
+		PYR2dHFITDFiZ1D1hwxxxSgjrUc=
 		</data>
 		<key>en.lproj/InfoPlist.strings</key>
-		<data>
-		zmV6UqBSo6r1NOz798vd5O4zTBA=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			giE6YeRc2SaB9GXgthtNNpjt5qU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>en.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CaqxStileOVhu3IrhzUFmzyriZc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>monitor.png</key>
 		<data>
 		3rtkFuYpwkvCXsbjbdTImuTksEQ=
@@ -505,79 +567,79 @@
 		</data>
 		<key>skyCell1.nib</key>
 		<data>
-		sXw5RUjk0UmGxX2QabrbV3eij54=
+		qLaXhNS3aOzwLZCUy5N4QAG9iBA=
 		</data>
 		<key>skyCell2.nib</key>
 		<data>
-		QiikLNOkUO0FHqm26uzPELC23d0=
+		/81UQLLG6gnAdPZUjpbm1I/B4Lc=
 		</data>
 		<key>skyModelCell.nib</key>
 		<data>
-		i3OodTfucCtr8ESHT1vzGEURZSM=
+		N8w+JC4KE+mMT1t17VM6uzVcG1M=
 		</data>
 		<key>skyModelView.nib</key>
 		<data>
-		xqMe+RJKHTWhHYj65rLQ+OMWEyI=
+		ULnNyvLxN/BW3d5YuAWyy1LOhaA=
 		</data>
 		<key>skySettingConnection.nib</key>
 		<data>
-		htO/zc1hRM90kVLDtmyL9cuZ+zo=
+		hH9E9whwEWAthpXnD942T+/L1CY=
 		</data>
 		<key>skySettingController.nib</key>
 		<data>
-		RX/DVhk5922Y5BDwQfIzZ/2aZcY=
+		NMApSsiAMni/SUjLkzhJzELZxw0=
 		</data>
 		<key>skySettingMainView.nib</key>
 		<data>
-		1yhnRJpxVTBTJzxQ1o6QUuVZzSY=
+		M1Rssw3vwrpQEX6Kdc0FrPxjRoQ=
 		</data>
 		<key>skySettingSDKs.nib</key>
 		<data>
-		Ir+WzaBpsosCT8Ofqvy2mXcW9yM=
+		4lJKq3HV5X1CWC9P6q24kmjjiZY=
 		</data>
 		<key>skySettingSignal.nib</key>
 		<data>
-		vYulkhfB96shZIzu+cHYuQEFBHI=
+		65bDzzPDRgcX6OOMCpThvf9YanM=
 		</data>
 		<key>skySignalView.nib</key>
 		<data>
-		k9v9oau5k8mFz61fdSMGB8EEW7E=
+		IyrEHr3jqH2RGzRfdaTkBZGRcPc=
 		</data>
 		<key>skyTVSettingController.nib</key>
 		<data>
-		Lys1I8A+4stxzh1M5+tJnzcwWhY=
+		7kMosVm7yCRqk7GPGRPxUpRMTTs=
 		</data>
 		<key>skyTableButtonCell.nib</key>
 		<data>
-		007M4/b4XhoBL8PZICdFfwR0LMM=
+		g8h/9sqUXKce8fcfBHwlH50yRZ0=
 		</data>
 		<key>skyTableSelectionCell.nib</key>
 		<data>
-		/KuqZlWz+uv4UOpGM8aYCn+Dzs4=
+		YT1Cns8PTG8jo3MRA7vL7dwCryg=
 		</data>
 		<key>skyTableSliderCell.nib</key>
 		<data>
-		lca6HiSelUSt2Shm0/9t4nZdBw0=
+		6smnkJSWEHK7FIqpQvEmxe7sBhc=
 		</data>
 		<key>skyTableStepperCell.nib</key>
 		<data>
-		1WWyumuwBaRbTZkjgeJudLbR+uk=
+		rRG+2/rCkH9es+7vwm5qrwsvmAs=
 		</data>
 		<key>skyViewController_iPad.nib/objects-8.0+.nib</key>
 		<data>
-		nnbdbI3009KoqJyNHeLy2yY2sj4=
+		aJyN4hK+qh38dhR/oFIlwyIujNo=
 		</data>
 		<key>skyViewController_iPad.nib/objects.nib</key>
 		<data>
-		wgp2wJQUDTpXW/a+ZNFmULKRjmQ=
+		Kx9OFO38F05XDiPPq9n4TpKzyv4=
 		</data>
 		<key>skyViewController_iPad.nib/runtime.nib</key>
 		<data>
-		2sdvBBbLiR8sSczhdHDOO379FHM=
+		NW8//+X25oQ1T+eSUeOjdvLmRyw=
 		</data>
 		<key>skyViewController_iPhone.nib</key>
 		<data>
-		fk5+EsNlCa4WqVMFJYhtXHqrEEo=
+		42c7aBkRtzRWep2/YVab22sl7Gw=
 		</data>
 		<key>switch.png</key>
 		<data>
@@ -591,57 +653,118 @@
 		<data>
 		FCToB5wmvd3QOrOH24roW3tw+OY=
 		</data>
+		<key>zh_Hans.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zRmeYzqS9EWaZ1Zi/I8r6hM1d04=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>zh_Hans.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			poULn1xm3dtbKFzFFJ4IYJ8L3PI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>.*</key>
+		<key>^</key>
 		<true/>
-		<key>^Info.plist$</key>
+		<key>^.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^.*\.lproj/locversion.plist$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
-			<real>10</real>
+			<real>1100</real>
 		</dict>
-		<key>^ResourceRules.plist$</key>
-		<dict>
-			<key>omit</key>
-			<true/>
-			<key>weight</key>
-			<real>100</real>
-		</dict>
+		<key>^version.plist$</key>
+		<true/>
 	</dict>
 	<key>rules2</key>
 	<dict>
-		<key>.*</key>
-		<true/>
-		<key>^(Frameworks|SharedFrameworks|Plugins|Plug-ins|XPCServices|Helpers|MacOS)/</key>
+		<key>.*\.dSYM($|/)</key>
+		<dict>
+			<key>weight</key>
+			<real>11</real>
+		</dict>
+		<key>^</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^(.*/)?\.DS_Store$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>2000</real>
+		</dict>
+		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
 		<dict>
 			<key>nested</key>
 			<true/>
 			<key>weight</key>
-			<real>0.0</real>
+			<real>10</real>
 		</dict>
-		<key>^Info.plist$</key>
+		<key>^.*</key>
+		<true/>
+		<key>^.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^.*\.lproj/locversion.plist$</key>
 		<dict>
 			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>1100</real>
+		</dict>
+		<key>^Info\.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^PkgInfo$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
+		<key>^[^/]+$</key>
+		<dict>
+			<key>nested</key>
 			<true/>
 			<key>weight</key>
 			<real>10</real>
 		</dict>
-		<key>^ResourceRules.plist$</key>
+		<key>^embedded\.provisionprofile$</key>
 		<dict>
-			<key>omit</key>
-			<true/>
 			<key>weight</key>
-			<real>100</real>
+			<real>20</real>
 		</dict>
-		<key>^[^/]+$</key>
+		<key>^version\.plist$</key>
 		<dict>
-			<key>top</key>
-			<true/>
 			<key>weight</key>
-			<real>0.0</real>
+			<real>20</real>
 		</dict>
 	</dict>
 </dict>
